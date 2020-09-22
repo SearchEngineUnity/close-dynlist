@@ -8,7 +8,13 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
-    "test": "sanity check"
+    "test": "sanity check",
+    "deploy": "npm run graphql-deploy && npm run sanity-deploy",
+    "graphql-deploy": "sanity graphql deploy --generation gen2",
+    "sanity-deploy": "sanity deploy",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "sanity"

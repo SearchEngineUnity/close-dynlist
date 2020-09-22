@@ -4,25 +4,20 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'airtableId',
-      title: 'Air Table ID',
-      type: 'string',
-      readOnly: true,
-    },
-    {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'name',
       title: 'Full Name',
-      type: 'string'      
+      type: 'string',
     },
-    {
-      name: 'parent',
-      title: 'Parent',
-      type: 'string'
-    },
+    // {
+    //   name: 'parent',
+    //   title: 'Parent',
+    //   type: 'reference',
+    //   to: [{ type: 'categorySet' }],
+    // },
   ],
-}
+};

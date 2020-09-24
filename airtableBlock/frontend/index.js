@@ -1,7 +1,6 @@
 import React from 'react';
 import { cursor, globalConfig } from '@airtable/blocks';
 import { initializeBlock, useBase, Box, useLoadable, useWatchable } from '@airtable/blocks/ui';
-
 import QuoteToSanity from './QuoteToSanity';
 import CategorySetToSanity from './CategorySetToSanity';
 import CategoryToSanity from './CategoryToSanity';

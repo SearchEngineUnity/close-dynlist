@@ -8,13 +8,12 @@ import {
   useWatchable,
   useGlobalConfig,
 } from '@airtable/blocks/ui';
+import { asyncLoop } from '../lib/helperFunctions';
 import { postToSanity, deleteSelectedMutations } from '../lib/postAndCrudFunctions';
 
-const createAndUpdateMutations = (records, table, baseId, tableId, categoryTableId, cb) => {
+const createAndUpdateMutations = async (records, table, baseId, tableId, categoryTableId, cb) => {
   const recordsList = records.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
-    console.log(record.getCellValue('Primary')[0]);
-    console.log(`${baseId}-${categoryTableId}-${record.getCellValue('Primary')[0].id}`);
 
     const secondarySet = record.getCellValue('Secondary').map((rec) => {
       const setId = `${baseId}-${categoryTableId}-${rec.id}`;
@@ -55,11 +54,7 @@ const createAndUpdateMutations = (records, table, baseId, tableId, categoryTable
     };
   });
 
-  // const mutations = recordsList.map((r) => removeEmpty(r));
-
-  recordsList.forEach((el) => {
-    cb([el], table);
-  });
+  await asyncLoop(recordsList, table, cb);
 };
 
 const QuoteToSanity = (props) => {

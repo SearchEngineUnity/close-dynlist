@@ -10,9 +10,8 @@ import {
 } from '@airtable/blocks/ui';
 
 import { postToSanity, deleteSelectedMutations } from '../lib/postAndCrudFunctions';
-import { removeEmpty } from '../lib/helperFunctions';
 
-const createAndUpdateMutations = (records, table, baseId, tableId, cb) => {
+const createAndUpdateMutations = async (records, table, baseId, tableId, cb) => {
   const recordsList = records.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
 
@@ -20,17 +19,21 @@ const createAndUpdateMutations = (records, table, baseId, tableId, cb) => {
       createOrReplace: {
         _id: id,
         _type: 'category',
-        title: record.getCellValueAsString('ID') || null,
-        name: record.getCellValueAsString('Full Name') || null,
+        title: record.getCellValueAsString('ID'),
+        name: record.getCellValueAsString('Full Name'),
       },
     };
   });
 
-  const mutations = recordsList.map((r) => removeEmpty(r));
+  (async () => {
+    // eslint-disable-next-line no-plusplus
+    for (let index = 0; index < recordsList.length; index++) {
+      // eslint-disable-next-line no-await-in-loop
+      const result = await cb([recordsList[index]], table);
 
-  mutations.forEach((el) => {
-    cb([el], table);
-  });
+      console.log(result);
+    }
+  })();
 };
 
 const CategoryToSanity = (props) => {

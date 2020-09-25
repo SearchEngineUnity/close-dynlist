@@ -40,11 +40,13 @@ export const deleteSelectedMutations = async (recordIds, table, baseId, tableId,
   const mutations = recordIds.map((recordId) => {
     const id = `${baseId}-${tableId}-${recordId}`;
 
-    return {
-      delete: {
-        id,
+    return [
+      {
+        delete: {
+          id,
+        },
       },
-    };
+    ];
   });
 
   await asyncLoop(mutations, table, cb);

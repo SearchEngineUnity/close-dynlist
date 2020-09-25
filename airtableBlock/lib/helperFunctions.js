@@ -11,7 +11,7 @@ export const asyncLoop = async (array, table, cb) => {
   // eslint-disable-next-line no-plusplus
   for (let index = 0; index < array.length; index++) {
     // eslint-disable-next-line no-await-in-loop
-    const result = await cb([array[index]], table);
+    const result = await cb(array[index], table);
 
     if (index === array.length - 1) {
       alert('Update complete');

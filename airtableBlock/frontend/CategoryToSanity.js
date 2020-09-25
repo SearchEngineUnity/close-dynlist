@@ -10,14 +10,16 @@ const createAndUpdateMutations = async (recordIds, table, baseId, tableId, cb) =
   const recordsList = selectedRecords.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
 
-    return {
-      createOrReplace: {
-        _id: id,
-        _type: 'category',
-        title: record.getCellValueAsString('ID'),
-        name: record.getCellValueAsString('Full Name'),
+    return [
+      {
+        createOrReplace: {
+          _id: id,
+          _type: 'category',
+          title: record.getCellValueAsString('ID'),
+          name: record.getCellValueAsString('Full Name'),
+        },
       },
-    };
+    ];
   });
 
   await asyncLoop(recordsList, table, cb);

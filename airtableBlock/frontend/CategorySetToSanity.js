@@ -20,15 +20,17 @@ const createAndUpdateMutations = async (recordIds, table, baseId, tableId, categ
       return setValue;
     });
 
-    return {
-      createOrReplace: {
-        _id: id,
-        _type: 'categorySet',
-        title: record.getCellValueAsString('ID'),
-        name: record.getCellValueAsString('Full Name'),
-        set: setArray,
+    return [
+      {
+        createOrReplace: {
+          _id: id,
+          _type: 'categorySet',
+          title: record.getCellValueAsString('ID'),
+          name: record.getCellValueAsString('Full Name'),
+          set: setArray,
+        },
       },
-    };
+    ];
   });
 
   await asyncLoop(recordsList, table, cb);

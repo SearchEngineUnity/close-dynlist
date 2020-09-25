@@ -32,22 +32,26 @@ const createAndUpdateMutations = async (recordIds, table, baseId, tableId, categ
       return setValue;
     });
 
-    return {
-      createOrReplace: {
-        _id: id,
-        _type: 'quote',
-        text: record.getCellValueAsString('Quote text'),
-        source: record.getCellValueAsString('Source') || 'Unknown',
-        youtube: record.getCellValueAsString('Youtube'),
-        primary: {
-          _ref: `${baseId}-${categoryTableId}-${record.getCellValue('Primary')[0].id}`,
-          _type: 'reference',
+    return [
+      {
+        createOrReplace: {
+          _id: id,
+          _type: 'quote',
+          text: record.getCellValueAsString('Quote text'),
+          source: record.getCellValueAsString('Source') || 'Unknown',
+          youtube: record.getCellValueAsString('Youtube'),
+          primary: {
+            _ref: `${baseId}-${categoryTableId}-${record.getCellValue('Primary')[0].id}`,
+            _type: 'reference',
+          },
+          secondary: secondarySet,
+          qualifying: qualifyingSet,
         },
-        secondary: secondarySet,
-        qualifying: qualifyingSet,
       },
-    };
+    ];
   });
+
+  console.log(recordsList);
 
   await asyncLoop(recordsList, table, cb);
 };

@@ -1,18 +1,13 @@
 import React from 'react';
-import { cursor } from '@airtable/blocks';
-import {
-  useRecords,
-  Button,
-  Box,
-  useLoadable,
-  useWatchable,
-  useGlobalConfig,
-} from '@airtable/blocks/ui';
-
+import { useRecords, Button, Box, useGlobalConfig } from '@airtable/blocks/ui';
+import { asyncLoop } from '../lib/helperFunctions';
 import { postToSanity, deleteSelectedMutations } from '../lib/postAndCrudFunctions';
 
-const createAndUpdateMutations = async (records, table, baseId, tableId, cb) => {
-  const recordsList = records.map((record) => {
+const createAndUpdateMutations = async (recordIds, table, baseId, tableId, cb) => {
+  const allRecords = table.selectRecords();
+  const selectedRecords = recordIds.map((id) => allRecords.getRecordById(id));
+
+  const recordsList = selectedRecords.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
 
     return {
@@ -25,30 +20,17 @@ const createAndUpdateMutations = async (records, table, baseId, tableId, cb) => 
     };
   });
 
-  (async () => {
-    // eslint-disable-next-line no-plusplus
-    for (let index = 0; index < recordsList.length; index++) {
-      // eslint-disable-next-line no-await-in-loop
-      const result = await cb([recordsList[index]], table);
-
-      console.log(result);
-    }
-  })();
+  await asyncLoop(recordsList, table, cb);
 };
 
 const CategoryToSanity = (props) => {
-  const { base } = props;
+  const { base, cursor } = props;
   const baseId = base.id;
-  // const tableId = table.id;
   const globalConfig = useGlobalConfig();
   const tableId = globalConfig.get('activeTableId');
   const table = base.getTableById(tableId);
+  // must run useRecords fo this to work...
   const records = useRecords(table);
-
-  // cursor is for listening to single record change - no currently set up
-  useLoadable(cursor);
-  useWatchable(cursor, ['selectedRecordIds']);
-
   const { selectedRecordIds } = cursor;
 
   return (
@@ -67,11 +49,11 @@ const CategoryToSanity = (props) => {
       <Button
         variant="primary"
         onClick={() => {
-          createAndUpdateMutations(records, table, baseId, tableId, postToSanity);
+          createAndUpdateMutations(selectedRecordIds, table, baseId, tableId, postToSanity);
         }}
         icon="edit"
       >
-        Create or Replace ALL CATEGORY Records in Sanity
+        Create or Replace SELECTED CATEGORY Records in Sanity
       </Button>
       <br />
       <Button

@@ -1,17 +1,13 @@
 import React from 'react';
-import { cursor } from '@airtable/blocks';
-import {
-  useRecords,
-  Button,
-  Box,
-  useLoadable,
-  useWatchable,
-  useGlobalConfig,
-} from '@airtable/blocks/ui';
+import { useRecords, Button, Box, useGlobalConfig } from '@airtable/blocks/ui';
+import { asyncLoop } from '../lib/helperFunctions';
 import { postToSanity, deleteSelectedMutations } from '../lib/postAndCrudFunctions';
 
-const createAndUpdateMutations = async (records, table, baseId, tableId, categoryTableId, cb) => {
-  const recordsList = records.map((record) => {
+const createAndUpdateMutations = async (recordIds, table, baseId, tableId, categoryTableId, cb) => {
+  const allRecords = table.selectRecords();
+  const selectedRecords = recordIds.map((id) => allRecords.getRecordById(id));
+
+  const recordsList = selectedRecords.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
     const setArray = record.getCellValue('Set').map((rec) => {
       const setId = `${baseId}-${categoryTableId}-${rec.id}`;
@@ -35,30 +31,18 @@ const createAndUpdateMutations = async (records, table, baseId, tableId, categor
     };
   });
 
-  (async () => {
-    // eslint-disable-next-line no-plusplus
-    for (let index = 0; index < recordsList.length; index++) {
-      // eslint-disable-next-line no-await-in-loop
-      const result = await cb([recordsList[index]], table);
-
-      console.log(result);
-    }
-  })();
+  await asyncLoop(recordsList, table, cb);
 };
 
 const CategorySetToSanity = (props) => {
   const globalConfig = useGlobalConfig();
-  const { base } = props;
+  const { base, cursor } = props;
   const baseId = base.id;
   const tableId = globalConfig.get('activeTableId');
   const table = base.getTableById(tableId);
   const categoryTableId = base.getTableByName('category').id;
+  // must keep useRecords(table) though not using the records values
   const records = useRecords(table);
-
-  // cursor is for listening to single record change - no currently set up
-  useLoadable(cursor);
-  useWatchable(cursor, ['selectedRecordIds']);
-
   const { selectedRecordIds } = cursor;
 
   return (
@@ -77,11 +61,18 @@ const CategorySetToSanity = (props) => {
       <Button
         variant="primary"
         onClick={() => {
-          createAndUpdateMutations(records, table, baseId, tableId, categoryTableId, postToSanity);
+          createAndUpdateMutations(
+            selectedRecordIds,
+            table,
+            baseId,
+            tableId,
+            categoryTableId,
+            postToSanity,
+          );
         }}
         icon="edit"
       >
-        Create or Replace ALL CATEGORY-SET Records in Sanity
+        Create or Replace SELECTED CATEGORY-SET Records in Sanity
       </Button>
       <br />
       <Button

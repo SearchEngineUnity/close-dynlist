@@ -1,18 +1,13 @@
 import React from 'react';
-import { cursor } from '@airtable/blocks';
-import {
-  useRecords,
-  Button,
-  Box,
-  useLoadable,
-  useWatchable,
-  useGlobalConfig,
-} from '@airtable/blocks/ui';
+import { useRecords, Button, Box, useGlobalConfig } from '@airtable/blocks/ui';
 import { asyncLoop } from '../lib/helperFunctions';
 import { postToSanity, deleteSelectedMutations } from '../lib/postAndCrudFunctions';
 
-const createAndUpdateMutations = async (records, table, baseId, tableId, categoryTableId, cb) => {
-  const recordsList = records.map((record) => {
+const createAndUpdateMutations = async (recordIds, table, baseId, tableId, categoryTableId, cb) => {
+  const allRecords = table.selectRecords();
+  const selectedRecords = recordIds.map((id) => allRecords.getRecordById(id));
+
+  const recordsList = selectedRecords.map((record) => {
     const id = `${baseId}-${tableId}-${record.id}`;
 
     const secondarySet = record.getCellValue('Secondary').map((rec) => {
@@ -58,19 +53,14 @@ const createAndUpdateMutations = async (records, table, baseId, tableId, categor
 };
 
 const QuoteToSanity = (props) => {
-  const { base } = props;
+  const { base, cursor } = props;
   const baseId = base.id;
-  // const tableId = table.id;
   const globalConfig = useGlobalConfig();
   const tableId = globalConfig.get('activeTableId');
   const table = base.getTableById(tableId);
   const categoryTableId = base.getTableByName('category').id;
+  // must run used records for some reason...
   const records = useRecords(table);
-
-  // cursor is for listening to single record change - no currently set up
-  useLoadable(cursor);
-  useWatchable(cursor, ['selectedRecordIds']);
-
   const { selectedRecordIds } = cursor;
 
   return (
@@ -89,11 +79,18 @@ const QuoteToSanity = (props) => {
       <Button
         variant="primary"
         onClick={() => {
-          createAndUpdateMutations(records, table, baseId, tableId, categoryTableId, postToSanity);
+          createAndUpdateMutations(
+            selectedRecordIds,
+            table,
+            baseId,
+            tableId,
+            categoryTableId,
+            postToSanity,
+          );
         }}
         icon="edit"
       >
-        Create or Replace ALL QUOTE Records in Sanity
+        Create or Replace SELECTED QUOTE Records in Sanity
       </Button>
       <br />
       <Button

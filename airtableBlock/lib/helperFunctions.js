@@ -12,7 +12,6 @@ export const asyncLoop = async (array, table, cb) => {
   for (let index = 0; index < array.length; index++) {
     // eslint-disable-next-line no-await-in-loop
     const result = await cb([array[index]], table);
-    console.log(result);
 
     if (index === array.length - 1) {
       alert('Update complete');
@@ -32,6 +31,7 @@ export const updateExistInSanityField = (result, mutations, table) => {
         id: selectedAirtableRecordId,
         fields: {
           'Exist in Sanity': false,
+          'Last Updated in Sanity': '',
         },
       },
     ]);
@@ -43,6 +43,9 @@ export const updateExistInSanityField = (result, mutations, table) => {
       id: airtableRecordId,
       fields: {
         'Exist in Sanity': true,
+        'Last Updated in Sanity': new Date().toLocaleString('en-CA', {
+          timeZone: 'America/New_York',
+        }),
       },
     },
   ]);

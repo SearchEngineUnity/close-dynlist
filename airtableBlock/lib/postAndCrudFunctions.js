@@ -4,7 +4,7 @@
 import { asyncLoop, updateExistInSanityField } from './helperFunctions';
 
 // eslint-disable-next-line consistent-return
-export const postToSanity = async (mutations, table, records) => {
+export const postToSanity = async (mutations, table) => {
   const url = 'https://hhd5q8cp.api.sanity.io/v1/data/mutate/production';
 
   try {
@@ -25,17 +25,11 @@ export const postToSanity = async (mutations, table, records) => {
       return 'Success!';
     }
   } catch (error) {
-    // should write better error handling
+    // should write better error handling especially for a 409 error
+    // 409 error (conflict) is usually caused by one trying to delete a document being used as a reference
     console.log(error);
     return 'Failure';
   }
-};
-
-// delete all function
-export const deleteMutations = (records, table, type, cb) => {
-  const mutations = [{ delete: { query: `*[_type == '${type}']` } }];
-
-  cb(mutations, table, records);
 };
 
 // delete selected function

@@ -9,7 +9,7 @@ const App = () => {
   const base = useBase();
 
   useLoadable(cursor);
-  useWatchable(cursor, ['activeTableId'], () => {
+  useWatchable(cursor, ['activeTableId', 'selectedRecordIds'], () => {
     globalConfig.setAsync('activeTableId', cursor.activeTableId);
   });
 
@@ -19,13 +19,13 @@ const App = () => {
 
   switch (activeTableId) {
     case 'tbl7BbubgVEMD5Kje':
-      return <QuoteToSanity base={base} />;
+      return <QuoteToSanity base={base} cursor={cursor} />;
 
     case 'tblnrE5rwDtBeZeUE':
-      return <CategoryToSanity base={base} />;
+      return <CategoryToSanity base={base} cursor={cursor} />;
 
     case 'tbluLD9PD6Gujv3m3':
-      return <CategorySetToSanity base={base} />;
+      return <CategorySetToSanity base={base} cursor={cursor} />;
 
     default:
       return (
@@ -42,7 +42,7 @@ const App = () => {
           overflow="hidden"
         >
           <h3>
-            Please re-select the &apos;quote&apos;, &apos;category&apos;, or &apos;categorySet&apos;
+            Please select the &apos;quote&apos;, &apos;category&apos;, or &apos;categorySet&apos;
             table to start
           </h3>
         </Box>

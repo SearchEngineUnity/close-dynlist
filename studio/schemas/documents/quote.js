@@ -1,7 +1,10 @@
+import { ImQuotesRight } from 'react-icons/im';
+
 export default {
   name: 'quote',
   title: 'Quote',
   type: 'document',
+  icon: ImQuotesRight,
   fields: [
     {
       name: 'text',

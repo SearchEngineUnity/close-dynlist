@@ -51,8 +51,6 @@ const createAndUpdateMutations = async (recordIds, table, baseId, tableId, categ
     ];
   });
 
-  console.log(recordsList);
-
   await asyncLoop(recordsList, table, cb);
 };
 

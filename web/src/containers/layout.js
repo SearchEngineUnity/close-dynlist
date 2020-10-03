@@ -8,72 +8,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { withPrefix } from 'gatsby';
+import Welcome from '../components/Welcome';
 import MainFooter from '../components/MainFooter';
 import MainNav from '../components/MainNav';
-import { mapMainNavToProps, mapMainFooterToProps } from '../lib/mapToProps';
-import GlobalStyle from '../global/GlobalStyle';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query FooterQuery {
-      sanityCompanyInfo {
-        _key
-        address1
-        city
-        email
-        postalCode
-        province
-        name
-      }
-      sanityMainNavbar {
-        title
-        logo {
-          asset {
-            url
-          }
-        }
-        menu {
-          ... on SanityNavJumpLink {
-            _key
-            _type
-            isButton
-            link
-            title
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <>
       <Helmet>
-        <script
-          rel="preload"
-          src="https://kit.fontawesome.com/e4a269ffa7.js"
-          crossOrigin="anonymous"
-          async
-        />
-        <script>
-          {`(function(d) {
-    var config = {
-      kitId: 'mwy2rpa',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);`}
-        </script>
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+        <link
+          href="https://fonts.googleapis.com/css?family=Caveat&amp;display=swap"
           rel="stylesheet"
-        /> */}
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Caveat&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Kalam&amp;display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Itim&amp;display=swap"
+          rel="stylesheet"
+        />
+        <script src="https://js.convertflow.co/production/websites/18223.js" async />
+        {/* <link rel="stylesheet" type="text/css" href={withPrefix('closeOriginal.css')} /> */}
+        {/* <script type="text/javascript" src={withPrefix('closeOriginal.js')} /> */}
+        <link rel="stylesheet" href="https://close.com/static/dist/style.min.css?h=f48dda9a" />
+        <link rel="stylesheet" type="text/css" href={withPrefix('globalStyle.css')} />
+        <script src="https://close.com/static/dist/scripts.min.js?h=b3f57533" />
       </Helmet>
-      <GlobalStyle />
-      <MainNav {...mapMainNavToProps(data.sanityMainNavbar)} />
+      <Welcome />
+      <MainNav />
       <>{children}</>
-      <MainFooter {...mapMainFooterToProps(data.sanityCompanyInfo)} />
+      <MainFooter />
     </>
   );
 };

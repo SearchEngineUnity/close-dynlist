@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 'oo9q1e97',
+        projectId: 'hhd5q8cp',
         dataset: 'production',
         // To enable preview of drafts, copy .env-example into .env,
         // and add a token with read permissions
@@ -49,7 +49,6 @@ module.exports = {
         start_url: `/`,
         lang: `en`,
         display: `standalone`,
-        icon: `src/images/SEU-favicon-transparent.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-remove-serviceworker`,

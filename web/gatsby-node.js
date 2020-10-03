@@ -4,7 +4,7 @@ const path = require('path');
 async function creteStructuredPages(actions, graphql) {
   const { data } = await graphql(`
     {
-      allSanityPage(filter: { slug: { current: { ne: "guide" } } }) {
+      allSanityDynlistPage {
         edges {
           node {
             slug {
@@ -16,11 +16,11 @@ async function creteStructuredPages(actions, graphql) {
     }
   `);
 
-  const pages = data.allSanityPage.edges;
+  const pages = data.allSanityDynlistPage.edges;
   pages.forEach((page) => {
     actions.createPage({
       path: page.node.slug.current === '/' ? '/' : `/${page.node.slug.current}`,
-      component: path.resolve(`./src/templates/structuredPage.js`),
+      component: path.resolve(`./src/templates/dynlistPage.js`),
       context: {
         slug: page.node.slug.current,
       },

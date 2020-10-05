@@ -12,7 +12,10 @@ export default () =>
         .child(
           S.list()
             .title('Website')
-            .items([S.documentTypeListItem('dynlistPage').title('Quotes Dynlist Pages')]),
+            .items([
+              S.documentTypeListItem('navMenu').title('Menus'),
+              S.documentTypeListItem('dynlistPage').title('Quotes Dynlist Pages'),
+            ]),
         ),
       S.listItem()
         .title('Quotes List')

@@ -1,11 +1,11 @@
-import { MdWeb } from 'react-icons/md';
+import { RiPagesLine } from 'react-icons/ri';
 import * as segments from '../segments';
 
 export default {
   name: 'dynlistPage',
   type: 'document',
   title: 'Dynlis Page',
-  icon: MdWeb,
+  icon: RiPagesLine,
   fieldsets: [
     {
       name: 'general',

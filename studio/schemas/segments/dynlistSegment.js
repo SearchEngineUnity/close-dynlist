@@ -4,6 +4,13 @@ export default {
   description: 'Renders a dynamic list segment of the list type selected below',
   type: 'object',
   fields: [
+    // https://www.sanity.io/docs/schema-types/reference-type
+    {
+      title: 'menu',
+      name: 'menu',
+      type: 'reference',
+      to: [{ type: 'navMenu' }],
+    },
     {
       name: 'list',
       type: 'array',

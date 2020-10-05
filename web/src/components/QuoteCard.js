@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Button } from 'react-bootstrap';
+import quoteMark from '../images/quoteMark.svg';
 
 function QuoteCard({ quote, source, video }) {
   return (
@@ -13,6 +14,7 @@ function QuoteCard({ quote, source, video }) {
           border: 'none',
           display: 'flex',
           flexDirection: 'column',
+          position: 'relative',
         }}
         className="w-100"
       >
@@ -25,6 +27,13 @@ function QuoteCard({ quote, source, video }) {
             Watch Video
           </Button>
         </a>
+        <img
+          src={quoteMark}
+          alt="quotation mark"
+          width="50px"
+          height="auto"
+          style={{ position: 'absolute', bottom: '32px', right: '32px' }}
+        />
       </Card>
     </Col>
   );

@@ -7,15 +7,16 @@ import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
 import { mapQuoteCardToProps } from '../lib/mapToProps';
 
-function Dynlist({ data, sectionStyle }) {
+function Dynlist({ data, sectionStyle, parameters }) {
   const { allSanityQuote } = data;
-
+  const { menu } = parameters.menu;
+  console.log(menu);
   return (
     <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
       <div className="container">
         <Row>
           <Col xs={12} md={3}>
-            <DynlistMenuDesktop />
+            <DynlistMenuDesktop menu={menu} />
           </Col>
           <Col xs={12} md={9}>
             <Row style={{ width: 'auto' }}>
@@ -30,8 +31,8 @@ function Dynlist({ data, sectionStyle }) {
   );
 }
 export default function DynlistSegment(props) {
-  const { parameters } = props;
-  console.log(parameters);
+  console.log(props);
+
   return (
     <StaticQuery
       query={graphql`

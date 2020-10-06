@@ -1,28 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
-import BlockContent from './block-contents/SeuLPSerializer';
 
-function DynlistMenuDesktop({ col, h1, subtitle, byline, author }) {
+function DynlistMenuDesktop({ menu }) {
+  console.log(menu);
   return (
     <ListGroup>
-      <ListGroup.Item>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-      <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-      <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-      <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+      {menu.map((item) => {
+        return (
+          <>
+            <Link to={`/${item.nav.slug.current}`}>
+              <ListGroup.Item
+                action
+                style={{
+                  backgroundColor: '#555863',
+                  border: '2px solid #F8F9FB',
+                  borderRadius: '4px 4px 0px 0px',
+                  color: '#FFFFFF',
+                }}
+              >
+                {item.label.name}
+              </ListGroup.Item>
+            </Link>
+            {item.group.length
+              ? item.group.map((el) => (
+                  <Link to={`/${el.nav.slug.current}`}>
+                    <ListGroup.Item
+                      action
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        border: '2px solid #F8F9FB',
+                        borderRadius: '4px 4px 0px 0px',
+                        color: '#3E444E',
+                      }}
+                    >
+                      {el.label.name}
+                    </ListGroup.Item>
+                  </Link>
+                ))
+              : null}
+          </>
+        );
+      })}
     </ListGroup>
   );
 }
 
-DynlistMenuDesktop.propTypes = {
-  col: PropTypes.string.isRequired,
-  h1: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  subtitle: PropTypes.array.isRequired,
-  byline: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-};
+DynlistMenuDesktop.propTypes = {};
 
 export default DynlistMenuDesktop;

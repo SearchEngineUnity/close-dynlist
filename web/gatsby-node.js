@@ -10,6 +10,16 @@ async function creteStructuredPages(actions, graphql) {
             slug {
               current
             }
+            segments {
+              ... on SanityDynListSegment {
+                category {
+                  _id
+                }
+                categorySet {
+                  _id
+                }
+              }
+            }
           }
         }
       }
@@ -23,6 +33,10 @@ async function creteStructuredPages(actions, graphql) {
       component: path.resolve(`./src/templates/dynlistPage.js`),
       context: {
         slug: page.node.slug.current,
+        categoryId: page.node.segments[1].category ? page.node.segments[1].category._id : 'all',
+        categorySetId: page.node.segments[1].categorySet
+          ? page.node.segments[1].categorySet._id
+          : 'all',
       },
     });
   });

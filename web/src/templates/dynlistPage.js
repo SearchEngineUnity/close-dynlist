@@ -34,7 +34,32 @@ export const query = graphql`
         ... on SanityDynListSegment {
           _key
           _type
-          list
+          menu {
+            menu {
+              ... on SanityNavGroup {
+                _key
+                _type
+                label {
+                  name
+                }
+                nav {
+                  slug {
+                    current
+                  }
+                }
+                group {
+                  label {
+                    name
+                  }
+                  nav {
+                    slug {
+                      current
+                    }
+                  }
+                }
+              }
+            }
+          }
           category {
             title
             name
@@ -43,6 +68,7 @@ export const query = graphql`
             title
             name
           }
+          list
         }
         ... on SanityLrSegment {
           _key

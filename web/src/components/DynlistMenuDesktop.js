@@ -24,23 +24,21 @@ function DynlistMenuDesktop({ menu }) {
                 {item.label.name}
               </ListGroup.Item>
             </Link>
-            {item.group.length
-              ? item.group.map((el) => (
-                  <Link to={`/${el.nav.slug.current}`}>
-                    <ListGroup.Item
-                      action
-                      style={{
-                        backgroundColor: '#FFFFFF',
-                        border: '2px solid #F8F9FB',
-                        borderRadius: '4px 4px 0px 0px',
-                        color: '#3E444E',
-                      }}
-                    >
-                      {el.label.name}
-                    </ListGroup.Item>
-                  </Link>
-                ))
-              : null}
+            {item.group.map((el) => (
+              <Link to={`/${el.nav.slug.current}`}>
+                <ListGroup.Item
+                  action
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '2px solid #F8F9FB',
+                    borderRadius: '4px 4px 0px 0px',
+                    color: '#3E444E',
+                  }}
+                >
+                  {el.label.name}
+                </ListGroup.Item>
+              </Link>
+            ))}
           </>
         );
       })}

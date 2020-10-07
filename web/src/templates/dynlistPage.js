@@ -48,6 +48,7 @@ export const query = graphql`
                   }
                 }
                 group {
+                  _key
                   label {
                     name
                   }
@@ -63,10 +64,12 @@ export const query = graphql`
           category {
             title
             name
+            _id
           }
           categorySet {
             title
             name
+            _id
           }
           list
         }
@@ -112,7 +115,9 @@ export const query = graphql`
     }
   }
 `;
-export default ({ data }) => {
+export default ({ data, pageContext }) => {
+  console.log(pageContext);
+
   const type = 'page';
   return (
     <Layout>
@@ -130,6 +135,7 @@ export default ({ data }) => {
                   key={segment._key}
                   parameters={segment}
                   sectionStyle={sectionStyle}
+                  {...pageContext}
                 />
               );
 

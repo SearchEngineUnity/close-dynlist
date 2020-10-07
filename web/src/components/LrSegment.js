@@ -51,7 +51,7 @@ function LrSegment({ layout, blocks, sectionStyle }) {
   return (
     <section className={sectionStyle}>
       <div className="container">
-        <Row style={{ alignItems: 'center' }}>
+        <Row style={{ alignItems: 'center', width: 'auto' }}>
           {blocks.map((block, index) => {
             const { _type } = block;
             const col = colCalculator(colArr[index], colDivisor);

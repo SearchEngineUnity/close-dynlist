@@ -1,43 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
 function DynlistMenuDesktop({ menu }) {
   console.log(menu);
+
+  const onClickHandler = (slug) => {
+    navigate(`/${slug}`);
+  };
+
   return (
     <ListGroup>
       {menu.map((item) => {
         return (
           <>
-            <Link to={`/${item.nav.slug.current}`}>
+            <ListGroup.Item
+              action
+              onClick={() => onClickHandler(item.nav.slug.current)}
+              bsPrefix="list-group-item dynlist-navItem-tierOne--desktop text-left"
+              key={item._key}
+            >
+              {item.label.name}
+            </ListGroup.Item>
+            {item.group.map((el) => (
               <ListGroup.Item
                 action
-                style={{
-                  backgroundColor: '#555863',
-                  border: '2px solid #F8F9FB',
-                  borderRadius: '4px 4px 0px 0px',
-                  color: '#FFFFFF',
-                }}
+                onClick={() => onClickHandler(el.nav.slug.current)}
+                bsPrefix="list-group-item dynlist-navItem-tierTwo--desktop text-left"
+                key={el._key}
               >
-                {item.label.name}
+                {el.label.name}
               </ListGroup.Item>
-            </Link>
-            {item.group.map((el) => (
-              <Link to={`/${el.nav.slug.current}`}>
-                <ListGroup.Item
-                  action
-                  style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '2px solid #F8F9FB',
-                    borderRadius: '4px 4px 0px 0px',
-                    color: '#3E444E',
-                  }}
-                >
-                  {el.label.name}
-                </ListGroup.Item>
-              </Link>
             ))}
           </>
         );

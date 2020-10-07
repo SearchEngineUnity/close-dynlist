@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
-import { Container, Navbar, Nav, NavDropdown, Button, Row } from 'react-bootstrap';
-import scrollToElement from 'scroll-to-element';
-import styled from 'styled-components';
 
 function MainNav() {
   return (

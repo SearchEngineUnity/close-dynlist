@@ -7,21 +7,48 @@ import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
 import { mapQuoteCardToProps } from '../lib/mapToProps';
 
-function Dynlist({ data, sectionStyle, parameters }) {
-  const { allSanityQuote } = data;
+function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) {
+  const { nodes: allQuotes } = data.allSanityQuote;
+  const { nodes: fullCategorySet } = data.allSanityCategorySet;
   const { menu } = parameters.menu;
-  console.log(menu);
+  console.log(fullCategorySet);
+  console.log(categoryId, categorySetId);
+
+  const filteredQuotes = allQuotes.filter((quote) => {
+    // console.log(categoryId, categorySetId);
+    const categories = [];
+
+    if (quote.primary) {
+      categories.push(quote.primary._id);
+    }
+
+    quote.secondary.forEach((el) => {
+      if (el) {
+        categories.push(el._id);
+      }
+    });
+
+    quote.qualifying.forEach((el) => {
+      if (el) {
+        categories.push(el._id);
+      }
+    });
+
+    // console.log(categories);
+    return true;
+  });
+
   return (
     <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
       <div className="container">
-        <Row>
-          <Col xs={12} md={3}>
+        <Row style={{ width: 'auto' }}>
+          <Col xs={12} lg={3} md={4}>
             <DynlistMenuDesktop menu={menu} />
           </Col>
-          <Col xs={12} md={9}>
+          <Col xs={12} lg={9} md={8}>
             <Row style={{ width: 'auto' }}>
-              {allSanityQuote.edges.map((el) => {
-                return <QuoteCard {...mapQuoteCardToProps(el.node)} key={el.node._id} />;
+              {allQuotes.map((el) => {
+                return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
               })}
             </Row>
           </Col>
@@ -36,27 +63,36 @@ export default function DynlistSegment(props) {
   return (
     <StaticQuery
       query={graphql`
-        query {
+        {
           allSanityQuote {
-            edges {
-              node {
+            nodes {
+              source
+              text
+              youtube
+              primary {
+                title
+                name
                 _id
-                source
-                text
-                youtube
-                primary {
-                  title
-                  name
-                }
-                qualifying {
-                  title
-                  name
-                }
-                secondary {
-                  title
-                  name
-                }
               }
+              qualifying {
+                title
+                name
+                _id
+              }
+              secondary {
+                title
+                name
+                _id
+              }
+              _id
+            }
+          }
+          allSanityCategorySet {
+            nodes {
+              set {
+                _id
+              }
+              _id
             }
           }
         }

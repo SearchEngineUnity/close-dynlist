@@ -5,8 +5,6 @@ import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
 function DynlistMenuDesktop({ menu }) {
-  console.log(menu);
-
   const onClickHandler = (slug) => {
     navigate(`/${slug}`);
   };

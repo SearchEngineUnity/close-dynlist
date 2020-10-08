@@ -6,18 +6,24 @@ export default {
     {
       name: 'label',
       title: 'Label',
-      type: 'reference',
-      to: [{ type: 'category' }],
+      type: 'string',
     },
     {
       name: 'nav',
+      title: 'Navigate to this page',
       type: 'reference',
       to: [{ type: 'dynlistPage' }],
+    },
+    {
+      name: 'icon',
+      title: 'Icon',
+      type: 'string',
+      description: 'Please enter a Font Awesome Icon class name',
     },
   ],
   preview: {
     select: {
-      title: 'label.name',
+      title: 'label',
       subtitle: 'nav.slug.current',
     },
     prepare({ title, subtitle }) {

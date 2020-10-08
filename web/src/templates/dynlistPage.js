@@ -39,9 +39,8 @@ export const query = graphql`
               ... on SanityNavGroup {
                 _key
                 _type
-                label {
-                  name
-                }
+                label
+                icon
                 nav {
                   slug {
                     current
@@ -49,9 +48,8 @@ export const query = graphql`
                 }
                 group {
                   _key
-                  label {
-                    name
-                  }
+                  label
+                  icon
                   nav {
                     slug {
                       current

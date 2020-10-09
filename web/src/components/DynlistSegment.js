@@ -7,15 +7,26 @@ import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
 import { mapQuoteCardToProps } from '../lib/mapToProps';
 
+// helper
+const findCommonElements = (arr1, arr2) => {
+  return arr1.some((item) => arr2.includes(item));
+};
+
 function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) {
   const { nodes: allQuotes } = data.allSanityQuote;
   const { nodes: fullCategorySet } = data.allSanityCategorySet;
   const { menu } = parameters.menu;
-  console.log(fullCategorySet);
-  console.log(categoryId, categorySetId);
+
+  const allCategorySetIds = fullCategorySet.map((el) => {
+    const setIds = el.set.map((x) => x._id);
+    const value = {
+      _id: el._id,
+      setIds,
+    };
+    return value;
+  });
 
   const filteredQuotes = allQuotes.filter((quote) => {
-    // console.log(categoryId, categorySetId);
     const categories = [];
 
     if (quote.primary) {
@@ -34,7 +45,15 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
       }
     });
 
-    // console.log(categories);
+    if (categoryId) {
+      return categories.includes(categoryId);
+    }
+
+    if (categorySetId) {
+      const selectedCategorySet = allCategorySetIds.filter((el) => el._id === categorySetId);
+      return findCommonElements(categories, selectedCategorySet[0].setIds);
+    }
+
     return true;
   });
 
@@ -47,7 +66,7 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
           </Col>
           <Col xs={12} lg={9} md={8}>
             <Row style={{ width: 'auto' }}>
-              {allQuotes.map((el) => {
+              {filteredQuotes.map((el) => {
                 return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
               })}
             </Row>
@@ -58,8 +77,6 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
   );
 }
 export default function DynlistSegment(props) {
-  console.log(props);
-
   return (
     <StaticQuery
       query={graphql`

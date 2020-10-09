@@ -1,3 +1,5 @@
+// this is a bit like react router the <App /> of react
+
 const path = require('path');
 
 // create all structured pages except for /guides
@@ -33,10 +35,10 @@ async function creteStructuredPages(actions, graphql) {
       component: path.resolve(`./src/templates/dynlistPage.js`),
       context: {
         slug: page.node.slug.current,
-        categoryId: page.node.segments[1].category ? page.node.segments[1].category._id : 'all',
+        categoryId: page.node.segments[1].category ? page.node.segments[1].category._id : null,
         categorySetId: page.node.segments[1].categorySet
           ? page.node.segments[1].categorySet._id
-          : 'all',
+          : null,
       },
     });
   });

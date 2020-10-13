@@ -12,12 +12,19 @@ const findCommonElements = (arr1, arr2) => {
   return arr1.some((item) => arr2.includes(item));
 };
 
-function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) {
-  const { nodes: allQuotes } = data.allSanityQuote;
-  const { nodes: fullCategorySet } = data.allSanityCategorySet;
-  const { menu } = parameters.menu;
+export default function DynlistSegment({
+  quotes,
+  categorySet,
+  sectionStyle,
+  parameters,
+  categoryId,
+  categorySetId,
+}) {
+  const { desktopMenu, mobileMenu } = parameters;
 
-  const allCategorySetIds = fullCategorySet.map((el) => {
+  console.log(quotes, categorySet, parameters);
+
+  const allCategorySetIds = categorySet.map((el) => {
     const setIds = el.set.map((x) => x._id);
     const value = {
       _id: el._id,
@@ -26,7 +33,7 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
     return value;
   });
 
-  const filteredQuotes = allQuotes.filter((quote) => {
+  const filteredQuotes = quotes.filter((quote) => {
     const categories = [];
 
     if (quote.primary) {
@@ -61,10 +68,10 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
     <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
       <div className="container">
         <Row style={{ width: 'auto' }}>
-          <Col xs={12} lg={3} md={4}>
-            <DynlistMenuDesktop menu={menu} />
+          <Col xs={12} lg={3} md={4} sm={4}>
+            <DynlistMenuDesktop menu={desktopMenu.menu} />
           </Col>
-          <Col xs={12} lg={9} md={8}>
+          <Col xs={12} lg={9} md={8} sm={8}>
             <Row style={{ width: 'auto' }}>
               {filteredQuotes.map((el) => {
                 return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
@@ -74,48 +81,6 @@ function Dynlist({ data, sectionStyle, parameters, categoryId, categorySetId }) 
         </Row>
       </div>
     </section>
-  );
-}
-export default function DynlistSegment(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        {
-          allSanityQuote {
-            nodes {
-              source
-              text
-              youtube
-              primary {
-                title
-                name
-                _id
-              }
-              qualifying {
-                title
-                name
-                _id
-              }
-              secondary {
-                title
-                name
-                _id
-              }
-              _id
-            }
-          }
-          allSanityCategorySet {
-            nodes {
-              set {
-                _id
-              }
-              _id
-            }
-          }
-        }
-      `}
-      render={(data) => <Dynlist data={data} {...props} />}
-    />
   );
 }
 

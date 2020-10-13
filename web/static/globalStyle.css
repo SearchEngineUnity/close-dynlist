@@ -74,3 +74,16 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   outline: none;
 }
 
+.fa-m:before {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  content: 'M';
+  color: #FFFFFF;
+}
+
+.fa-f:before {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  content: 'F';
+  color: #FFFFFF;
+}

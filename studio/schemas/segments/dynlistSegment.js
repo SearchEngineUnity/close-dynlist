@@ -6,20 +6,27 @@ export default {
   fields: [
     // https://www.sanity.io/docs/schema-types/reference-type
     {
-      title: 'menu',
-      name: 'menu',
+      title: 'Desktop Menu',
+      name: 'desktopMenu',
       type: 'reference',
       to: [{ type: 'navMenu' }],
     },
     {
-      name: 'list',
+      title: 'Mobile Menu',
+      name: 'mobileMenu',
+      type: 'reference',
+      to: [{ type: 'navMenu' }],
+    },
+    {
+      title: 'Breadcrumb',
+      name: 'breadcrumb',
       type: 'array',
-      title: 'List(s)',
-      description: 'Please pick at least one list type',
-      of: [{ type: 'string' }],
-      options: {
-        list: [{ title: 'Quote', value: 'quote' }],
-      },
+      description: 'Please always include current location as well',
+      of: [
+        {
+          type: 'navItem',
+        },
+      ],
     },
     // https://www.sanity.io/docs/schema-types/reference-type
     {

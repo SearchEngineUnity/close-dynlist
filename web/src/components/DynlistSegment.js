@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
+import Breadcrumb from './DynlistBreadcrumb';
 import { mapQuoteCardToProps } from '../lib/mapToProps';
 
 // helper
@@ -20,9 +21,9 @@ export default function DynlistSegment({
   categoryId,
   categorySetId,
 }) {
-  const { desktopMenu, mobileMenu } = parameters;
+  const { desktopMenu, mobileMenu, breadcrumb } = parameters;
 
-  console.log(quotes, categorySet, parameters);
+  console.log(breadcrumb);
 
   const allCategorySetIds = categorySet.map((el) => {
     const setIds = el.set.map((x) => x._id);
@@ -67,6 +68,11 @@ export default function DynlistSegment({
   return (
     <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
       <div className="container">
+        <Row style={{ width: 'auto' }}>
+          <Col>
+            <Breadcrumb breadcrumb={breadcrumb} />
+          </Col>
+        </Row>
         <Row style={{ width: 'auto' }}>
           <Col xs={12} lg={3} md={4} sm={4}>
             <DynlistMenuDesktop menu={desktopMenu.menu} />

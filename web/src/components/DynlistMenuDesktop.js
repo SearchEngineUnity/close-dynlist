@@ -25,6 +25,7 @@ function DynlistMenuDesktop({ menu }) {
               action
               onClick={() => onClickHandler(item.nav.slug.current)}
               bsPrefix="list-group-item dynlist-navItem-tierOne--desktop text-left"
+              activeClassName="dynlist-navItem-tierOne--desktop-active"
             >
               {item.label}
             </ListGroup.Item>
@@ -34,6 +35,7 @@ function DynlistMenuDesktop({ menu }) {
                 onClick={() => onClickHandler(el.nav.slug.current)}
                 bsPrefix="list-group-item dynlist-navItem-tierTwo--desktop text-left"
                 key={el._key}
+                activeClassName="dynlist-navItem-tierTwo--desktop-active"
               >
                 {el.label}
               </ListGroup.Item>

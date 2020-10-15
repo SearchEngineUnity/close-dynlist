@@ -48,7 +48,8 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 
 .dynlist-navItem-tierOne--desktop:hover, 
 .dynlist-navItem-tierOne--desktop:focus, 
-.dynlist-navItem-tierOne--desktop:active {
+.dynlist-navItem-tierOne--desktop:active,
+.dynlist-navItem-tierOne--desktop-active {
   background-color: #4364AF;
   border: 4px solid #F2F3F9;
   border-radius: 4px 4px 0px 0px;
@@ -66,7 +67,8 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 
 .dynlist-navItem-tierTwo--desktop:hover, 
 .dynlist-navItem-tierTwo--desktop:focus, 
-.dynlist-navItem-tierTwo--desktop:active {
+.dynlist-navItem-tierTwo--desktop:active
+.dynlist-navItem-tierTwo--desktop-active {
   background-color: #F2F3F9;
   border: 4px solid #F2F3F9;
   border-radius: 4px 4px 0px 0px;
@@ -74,3 +76,74 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   outline: none;
 }
 
+.fa-m:before {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  content: 'M';
+  color: #FFFFFF;
+}
+
+.fa-f:before {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  content: 'F';
+  color: #FFFFFF;
+}
+
+.dynlist-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 4px;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.dynlist-breadcrumbItem {
+  display: flex;
+}
+
+.dynlist-breadcrumbItem-active {
+  display: flex;
+  font-weight: bold;
+  color: #4364AF;
+}
+
+.dynlist-breadcrumbItem+.dynlist-breadcrumbItem {
+  padding-left: .5rem;
+}
+
+.dynlist-breadcrumbItem+.dynlist-breadcrumbItem::before {
+  display: inline-block;
+  padding-right: .5rem;
+  content: "/";
+  color: #3E444E;
+  font-weight: normal;
+}
+
+.dynlist-breadcrumbItem-mobile {
+  display: flex;
+  font-weight: bold;
+  color: #4364AF;
+}
+
+.dynlist-breadcrumbItem-mobile::before {
+  display: inline-block;
+  padding-right: .5rem;
+  content: "<";
+  font-weight: bold;
+  color: #4364AF;
+}
+
+.dynlist-breadcrumbItem-mobile-root {
+  display: flex;
+  font-weight: bold;
+  color: #4364AF;
+}
+
+.dynlist-breadcrumbItem-mobile-root::after {
+  display: inline-block;
+  padding-left: .5rem;
+  content: ">";
+  font-weight: bold;
+  color: #4364AF;
+}

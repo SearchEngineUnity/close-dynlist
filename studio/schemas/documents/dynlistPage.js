@@ -129,7 +129,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'shortName',
       slug: 'slug.current',
       media: 'metaTags.openGraph.image',
     },

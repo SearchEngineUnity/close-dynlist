@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 function DynlistMenuMobile({ menu }) {
   console.log(menu);
-
   return (
     <div className="navigation navigation--mobile" style={{ display: 'none' }}>
       <div className="mobile-menu__wrapper">
@@ -49,5 +48,4 @@ function DynlistMenuMobile({ menu }) {
     </div>
   );
 }
-
 export default DynlistMenuMobile;

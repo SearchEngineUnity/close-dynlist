@@ -34,33 +34,6 @@ export const query = graphql`
         ... on SanityDynListSegment {
           _key
           _type
-          menu {
-            menu {
-              ... on SanityNavGroup {
-                _key
-                _type
-                label {
-                  name
-                }
-                nav {
-                  slug {
-                    current
-                  }
-                }
-                group {
-                  _key
-                  label {
-                    name
-                  }
-                  nav {
-                    slug {
-                      current
-                    }
-                  }
-                }
-              }
-            }
-          }
           category {
             title
             name
@@ -71,7 +44,61 @@ export const query = graphql`
             name
             _id
           }
-          list
+          breadcrumb {
+            nav {
+              slug {
+                current
+              }
+            }
+            _key
+            label
+          }
+          desktopMenu {
+            menu {
+              ... on SanityNavGroup {
+                _key
+                _type
+                label
+                nav {
+                  slug {
+                    current
+                  }
+                }
+                group {
+                  _key
+                  nav {
+                    slug {
+                      current
+                    }
+                  }
+                  label
+                }
+              }
+            }
+          }
+          mobileMenu {
+            menu {
+              ... on SanityNavGroup {
+                _key
+                _type
+                label
+                nav {
+                  slug {
+                    current
+                  }
+                }
+                group {
+                  icon
+                  nav {
+                    slug {
+                      current
+                    }
+                  }
+                  label
+                }
+              }
+            }
+          }
         }
         ... on SanityLrSegment {
           _key
@@ -113,10 +140,42 @@ export const query = graphql`
         siteUrl
       }
     }
+    quotes: allSanityQuote {
+      nodes {
+        source
+        text
+        youtube
+        primary {
+          title
+          name
+          _id
+        }
+        qualifying {
+          title
+          name
+          _id
+        }
+        secondary {
+          title
+          name
+          _id
+        }
+        _id
+      }
+    }
+    categorySet: allSanityCategorySet {
+      nodes {
+        set {
+          _id
+        }
+        _id
+      }
+    }
   }
 `;
 export default ({ data, pageContext }) => {
   const type = 'page';
+
   return (
     <Layout>
       <SEO {...mapSeoToProps(data.page, data.site.siteMetadata.siteUrl, type)} />
@@ -132,6 +191,8 @@ export default ({ data, pageContext }) => {
                 <DynlistSegment
                   key={segment._key}
                   parameters={segment}
+                  quotes={data.quotes.nodes}
+                  categorySet={data.categorySet.nodes}
                   sectionStyle={sectionStyle}
                   {...pageContext}
                 />

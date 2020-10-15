@@ -12,6 +12,16 @@ import { mapQuoteCardToProps } from '../lib/mapToProps';
 const findCommonElements = (arr1, arr2) => {
   return arr1.some((item) => arr2.includes(item));
 };
+// category evaluator function
+const categoryValue = (quote, id) => {
+  if (quote.primary._id === id) {
+    return 1;
+  }
+  if (quote.secondary.map((el) => el._id).includes(id)) {
+    return 2;
+  }
+  return 3;
+};
 
 export default function DynlistSegment({
   quotes,
@@ -23,7 +33,7 @@ export default function DynlistSegment({
 }) {
   const { desktopMenu, mobileMenu, breadcrumb } = parameters;
 
-  console.log(breadcrumb);
+  console.log(categoryId);
 
   const allCategorySetIds = categorySet.map((el) => {
     const setIds = el.set.map((x) => x._id);
@@ -63,6 +73,21 @@ export default function DynlistSegment({
     }
 
     return true;
+  });
+
+  // sorting by category
+  filteredQuotes.sort((a, b) => {
+    const categoryValueA = categoryValue(a, categoryId);
+    const categoryValueB = categoryValue(b, categoryId);
+
+    if (categoryValueA < categoryValueB) {
+      return -1;
+    }
+    if (categoryValueA > categoryValueB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
   });
 
   return (

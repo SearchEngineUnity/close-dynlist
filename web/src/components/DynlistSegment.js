@@ -22,6 +22,28 @@ const categoryValue = (quote, id) => {
   }
   return 3;
 };
+// Fisher-Yates shuffle
+function shuffle(array) {
+  let m = array.length;
+  let t;
+  let i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    // eslint-disable-next-line no-plusplus
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    // eslint-disable-next-line no-param-reassign
+    array[m] = array[i];
+    // eslint-disable-next-line no-param-reassign
+    array[i] = t;
+  }
+
+  return array;
+}
 
 export default function DynlistSegment({
   quotes,
@@ -76,19 +98,25 @@ export default function DynlistSegment({
   });
 
   // sorting by category
-  filteredQuotes.sort((a, b) => {
-    const categoryValueA = categoryValue(a, categoryId);
-    const categoryValueB = categoryValue(b, categoryId);
+  if (categoryId && categorySetId) {
+    filteredQuotes.sort((a, b) => {
+      const categoryValueA = categoryValue(a, categoryId);
+      const categoryValueB = categoryValue(b, categoryId);
 
-    if (categoryValueA < categoryValueB) {
-      return -1;
-    }
-    if (categoryValueA > categoryValueB) {
-      return 1;
-    }
-    // names must be equal
-    return 0;
-  });
+      if (categoryValueA < categoryValueB) {
+        return -1;
+      }
+      if (categoryValueA > categoryValueB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+  }
+
+  if (categorySetId) {
+    shuffle(filteredQuotes);
+  }
 
   return (
     <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>

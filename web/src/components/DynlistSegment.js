@@ -119,27 +119,30 @@ export default function DynlistSegment({
   }
 
   return (
-    <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
-      <div className="container">
-        <Row style={{ width: 'auto' }}>
-          <Col>
-            <Breadcrumb breadcrumb={breadcrumb} />
-          </Col>
-        </Row>
-        <Row style={{ width: 'auto' }}>
-          <Col xs={12} lg={3} md={4} sm={4}>
-            <DynlistMenuDesktop menu={desktopMenu.menu} />
-          </Col>
-          <Col xs={12} lg={9} md={8} sm={8}>
-            <Row style={{ width: 'auto' }}>
-              {filteredQuotes.map((el) => {
-                return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
-              })}
-            </Row>
-          </Col>
-        </Row>
-      </div>
-    </section>
+    <>
+      <div className="solid-background--top--grey" />
+      <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
+        <div className="container">
+          <Row style={{ width: 'auto' }}>
+            <Col>
+              <Breadcrumb breadcrumb={breadcrumb} />
+            </Col>
+          </Row>
+          <Row style={{ width: 'auto' }}>
+            <Col xs={12} lg={3} md={4} sm={4}>
+              <DynlistMenuDesktop menu={desktopMenu.menu} />
+            </Col>
+            <Col xs={12} lg={9} md={8} sm={8}>
+              <Row style={{ width: 'auto' }}>
+                {filteredQuotes.map((el) => {
+                  return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
+                })}
+              </Row>
+            </Col>
+          </Row>
+        </div>
+      </section>
+    </>
   );
 }
 

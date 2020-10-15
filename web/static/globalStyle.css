@@ -102,22 +102,22 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   display: flex;
 }
 
-.dynlist-breadcrumbItem-active {
+.dynlist-breadcrumbItem:hover {
+  display: flex;
+  text-decoration: underline;
+}
+
+.dynlist-bradcrumbItem-seperator {
+  padding: 0 0.5rem;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.dynlist-breadcrumbItem.active {
   display: flex;
   font-weight: bold;
   color: #4364AF;
-}
-
-.dynlist-breadcrumbItem+.dynlist-breadcrumbItem {
-  padding-left: .5rem;
-}
-
-.dynlist-breadcrumbItem+.dynlist-breadcrumbItem::before {
-  display: inline-block;
-  padding-right: .5rem;
-  content: "/";
-  color: #3E444E;
-  font-weight: normal;
+  text-decoration: none;
 }
 
 .dynlist-breadcrumbItem-mobile {

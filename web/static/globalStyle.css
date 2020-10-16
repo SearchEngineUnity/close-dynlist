@@ -40,39 +40,38 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 
 .dynlist-navItem-tierOne--desktop {
   background-color: #555863;
-  border: 4px solid #F2F3F9;
-  border-radius: 4px 4px 0px 0px;
+  border: 0;
+  border-bottom: 4px solid #F2F3F9;
+  border-radius: none;
   color: #FFFFFF;
-  border-top-width: 0;
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
 }
 
 .dynlist-navItem-tierOne--desktop:hover, 
 .dynlist-navItem-tierOne--desktop:focus, 
 .dynlist-navItem-tierOne--desktop:active,
-.dynlist-navItem-tierOne--desktop-active {
+.dynlist-navItem-tierOne--desktop.active {
   background-color: #4364AF;
-  border: 4px solid #F2F3F9;
-  border-radius: 4px 4px 0px 0px;
-  color: #FFFFFF;
-  border-top-width: 0;
   outline: none;
 }
 
 .dynlist-navItem-tierTwo--desktop {
   background-color: #FFFFFF;
-  border: 4px solid #F2F3F9;
-  border-radius: 4px 4px 0px 0px;
-  border-top-width: 0;
+  border: 0;
+  border-bottom: 4px solid #F2F3F9;
+  border-radius: none;
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
 }
 
 .dynlist-navItem-tierTwo--desktop:hover, 
 .dynlist-navItem-tierTwo--desktop:focus, 
-.dynlist-navItem-tierTwo--desktop:active
-.dynlist-navItem-tierTwo--desktop-active {
+.dynlist-navItem-tierTwo--desktop:active,
+.dynlist-navItem-tierTwo--desktop.active {
   background-color: #F2F3F9;
-  border: 4px solid #F2F3F9;
-  border-radius: 4px 4px 0px 0px;
-  border-top-width: 0;
   outline: none;
 }
 
@@ -93,7 +92,6 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 .dynlist-breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 4px;
   margin-bottom: 1rem;
   list-style: none;
 }

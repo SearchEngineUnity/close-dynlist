@@ -180,7 +180,6 @@ export default ({ data, pageContext }) => {
     <Layout>
       <SEO {...mapSeoToProps(data.page, data.site.siteMetadata.siteUrl, type)} />
       <main>
-        <div className="solid-background--top--grey" />
         {data.page.segments.map((segment, index) => {
           const { _type } = segment;
           const sectionStyle =

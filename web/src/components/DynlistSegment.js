@@ -98,6 +98,11 @@ export default function DynlistSegment({
     return true;
   });
 
+  if (categorySetId && categoryId === null) {
+    console.log('categoryset only');
+    shuffle(filteredQuotes);
+  }
+
   // sorting by category
   if (categoryId && categorySetId) {
     filteredQuotes.sort((a, b) => {
@@ -113,10 +118,6 @@ export default function DynlistSegment({
       // names must be equal
       return 0;
     });
-  }
-
-  if (categorySetId) {
-    shuffle(filteredQuotes);
   }
 
   return (

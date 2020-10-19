@@ -34,6 +34,13 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         />
         <script src="https://js.convertflow.co/production/websites/18223.js" async />
+        <script
+          rel="preload"
+          src="https://kit.fontawesome.com/e4a269ffa7.js"
+          crossOrigin="anonymous"
+          async
+        />
+        <script />
         {/* <link rel="stylesheet" type="text/css" href={withPrefix('closeOriginal.css')} /> */}
         {/* <script type="text/javascript" src={withPrefix('closeOriginal.js')} /> */}
         <link rel="stylesheet" href="https://close.com/static/dist/style.min.css?h=f48dda9a" />

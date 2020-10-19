@@ -76,16 +76,18 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 }
 
 .fa-m:before {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-family:"Inter",sans-serif;
+  font-weight: 600;
+  font-size: 18px;
   content: 'M';
   color: #FFFFFF;
 }
 
 .fa-f:before {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-family:"Inter",sans-serif;
+  font-weight: 600;
   content: 'F';
+  font-size: 18px;
   color: #FFFFFF;
 }
 
@@ -144,4 +146,48 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   content: ">";
   font-weight: bold;
   color: #4364AF;
+}
+
+.dynlist-nav--mobile {
+  display: block;
+  z-index: 1000;
+  width: 100vw;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll !important;
+}
+
+.dynlist-nav-close {
+  width: 26px;
+  height: 40px;
+  border-radius: 4px;
+  position: relative;
+  right: -4px;
+  margin-left: auto;
+}
+
+.dynlist-nav-close::before, .dynlist-nav-close::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  width: 3px;
+  height: 24px;
+  background-color: #3e444e;
+  border-radius: 2px;
+}
+
+.dynlist-nav-close::before {
+  transform: rotate(45deg);
+}
+
+.dynlist-nav-close::after {
+  transform: rotate(-45deg);
+}
+
+.icon-background {
+  color: black;
 }

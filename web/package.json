@@ -36,6 +36,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^3.10.0",
     "react-share": "^4.2.1",
+    "react-tiny-fab": "^4.0.1",
     "scroll-to-element": "^2.0.3",
     "styled": "^1.0.0",
     "styled-components": "^5.2.0"

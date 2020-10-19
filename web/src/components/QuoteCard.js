@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Card, Button } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import quoteMark from '../images/quoteMark.svg';
 
 function QuoteCard({ quote, source, video }) {
@@ -22,10 +22,6 @@ function QuoteCard({ quote, source, video }) {
           <p style={{ paddingBottom: '1rem' }}>{quote}</p>
           <p style={{ color: '#7B85A0', paddingBottom: '1rem', fontSize: '0.875rem' }}>{source}</p>
         </div>
-
-        {/* <Button bsPrefix="btn-card--dynlist btn" onClick={() => window.open(video, '_blank')}>
-          Watch Video
-        </Button> */}
         <a
           href={video}
           target="_blank"

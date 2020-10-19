@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
+import DynlistMenuMobile from './DynlistMenuMobile';
 import Breadcrumb from './DynlistBreadcrumb';
 import { mapQuoteCardToProps } from '../lib/mapToProps';
 
@@ -122,6 +123,7 @@ export default function DynlistSegment({
     <>
       <div className="solid-background--top--grey" />
       <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
+        <DynlistMenuMobile menu={mobileMenu.menu} />
         <div className="container">
           <Row style={{ width: 'auto' }}>
             <Col>

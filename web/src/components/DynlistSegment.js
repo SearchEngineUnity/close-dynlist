@@ -115,7 +115,7 @@ export default function DynlistSegment({
     });
   }
 
-  if (categorySetId) {
+  if (categorySetId && !categorySetId) {
     shuffle(filteredQuotes);
   }
 

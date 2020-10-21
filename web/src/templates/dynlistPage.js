@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../containers/layout';
 import SEO from '../components/Seo';
@@ -175,6 +175,11 @@ export const query = graphql`
 `;
 export default ({ data, pageContext }) => {
   const type = 'page';
+  useEffect(() => {
+    // code to run on component mount
+    console.log('component did mount');
+    // window.scrollTo(0, 2000)
+  }, []);
 
   return (
     <Layout>

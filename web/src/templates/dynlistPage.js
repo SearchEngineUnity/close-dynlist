@@ -179,7 +179,7 @@ export default ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO {...mapSeoToProps(data.page, data.site.siteMetadata.siteUrl, type)} />
-      <main>
+      <main id="dynlistPage">
         {data.page.segments.map((segment, index) => {
           const { _type } = segment;
           const sectionStyle =

@@ -56,8 +56,6 @@ export default function DynlistSegment({
 }) {
   const { desktopMenu, mobileMenu, breadcrumb } = parameters;
 
-  console.log(categoryId);
-
   const allCategorySetIds = categorySet.map((el) => {
     const setIds = el.set.map((x) => x._id);
     const value = {
@@ -99,7 +97,6 @@ export default function DynlistSegment({
   });
 
   if (categorySetId && categoryId === null) {
-    console.log('categoryset only');
     shuffle(filteredQuotes);
   }
 

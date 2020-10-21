@@ -45,13 +45,18 @@ function shuffle(array) {
 
   return array;
 }
-// psudo code for new 'radomize' method
 const randomize = (quotes, categorySetId, allCategorySetIds) => {
-  // find position of selected categorySet w/in the allCategorySetIds using the categorySetId
-  // filter the quotes list to return a new array containing only quotes in position that is divisible by the position number above + 1
-  // concact new list with original quote
-  // pass concat array through ...Set to create array with no duplicate
-  // return said array
+  const primeArray = [3, 5, 7, 11, 13, 17, 19, 23];
+  const categorySetIndex = allCategorySetIds.map((x) => x._id).indexOf(categorySetId);
+  console.log(primeArray[categorySetIndex]);
+  const randomSet = quotes.filter((el, index) => {
+    if (index % primeArray[categorySetIndex] === 0 && index !== 0) {
+      return true;
+    }
+    return false;
+  });
+  const randomList = [...new Set(randomSet.concat(quotes))];
+  return randomList;
 };
 
 export default function DynlistSegment({
@@ -104,13 +109,17 @@ export default function DynlistSegment({
     return true;
   });
 
+  let categorySetQuotes;
+  let categoryQuotes;
+
   if (categorySetId && categoryId === null) {
-    shuffle(filteredQuotes);
+    // shuffle(filteredQuotes);
+    categorySetQuotes = randomize(filteredQuotes, categorySetId, allCategorySetIds);
   }
 
   // sorting by category
   if (categoryId && categorySetId) {
-    filteredQuotes.sort((a, b) => {
+    categoryQuotes = [...filteredQuotes].sort((a, b) => {
       const categoryValueA = categoryValue(a, categoryId);
       const categoryValueB = categoryValue(b, categoryId);
 
@@ -125,6 +134,15 @@ export default function DynlistSegment({
     });
   }
 
+  let quotesOnPage = quotes;
+
+  if (categorySetId) {
+    quotesOnPage = categorySetQuotes;
+  }
+  if (categoryId) {
+    quotesOnPage = categoryQuotes;
+  }
+  console.log(quotesOnPage);
   return (
     <>
       <div className="solid-background--top--grey" />
@@ -142,7 +160,7 @@ export default function DynlistSegment({
             </Col>
             <Col xs={12} lg={9} md={8} sm={8}>
               <Row style={{ width: 'auto' }}>
-                {filteredQuotes.map((el) => {
+                {quotesOnPage.map((el) => {
                   return <QuoteCard {...mapQuoteCardToProps(el)} key={el._id} />;
                 })}
               </Row>

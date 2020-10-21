@@ -13,7 +13,6 @@ const MobileFab = styled.div`
 // import PropTypes from 'prop-types';
 
 function DynlistMenuMobile({ menu }) {
-  console.log(menu);
   const [open, setOpen] = useState(false);
   const onClickHandeler = () => {
     setOpen(!open);

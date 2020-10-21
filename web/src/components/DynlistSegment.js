@@ -45,6 +45,14 @@ function shuffle(array) {
 
   return array;
 }
+// psudo code for new 'radomize' method
+const randomize = (quotes, categorySetId, allCategorySetIds) => {
+  // find position of selected categorySet w/in the allCategorySetIds using the categorySetId
+  // filter the quotes list to return a new array containing only quotes in position that is divisible by the position number above + 1
+  // concact new list with original quote
+  // pass concat array through ...Set to create array with no duplicate
+  // return said array
+};
 
 export default function DynlistSegment({
   quotes,
@@ -55,8 +63,6 @@ export default function DynlistSegment({
   categorySetId,
 }) {
   const { desktopMenu, mobileMenu, breadcrumb } = parameters;
-
-  console.log(categoryId);
 
   const allCategorySetIds = categorySet.map((el) => {
     const setIds = el.set.map((x) => x._id);
@@ -99,7 +105,6 @@ export default function DynlistSegment({
   });
 
   if (categorySetId && categoryId === null) {
-    console.log('categoryset only');
     shuffle(filteredQuotes);
   }
 

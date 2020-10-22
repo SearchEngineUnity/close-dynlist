@@ -46,8 +46,34 @@ function shuffle(array) {
   return array;
 }
 const randomize = (quotes, categorySetId, allCategorySetIds) => {
-  const primeArray = [3, 5, 7, 11, 13, 17, 19, 23];
+  const primeArray = [
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59,
+    61,
+    67,
+    71,
+    73,
+    79,
+    83,
+    89,
+    97,
+  ];
   const categorySetIndex = allCategorySetIds.map((x) => x._id).indexOf(categorySetId);
+  // value not undefined verify this before randomSet if statement is executed if it is undefined then two things consol log an error and fix
   console.log(primeArray[categorySetIndex]);
   const randomSet = quotes.filter((el, index) => {
     if (index % primeArray[categorySetIndex] === 0 && index !== 0) {

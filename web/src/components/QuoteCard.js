@@ -19,15 +19,24 @@ function QuoteCard({ quote, source, video }) {
         className="w-100"
       >
         <div style={{ flex: '1' }}>
-          <p style={{ paddingBottom: '1rem' }}>{quote}</p>
-          <p style={{ color: '#7B85A0', paddingBottom: '1rem', fontSize: '0.875rem' }}>{source}</p>
+          <p style={{ paddingBottom: '1rem', fontSize: '18px' }}>{quote}</p>
+          <p
+            style={{
+              color: '#3E444E',
+              paddingBottom: '1rem',
+              fontSize: '0.875rem',
+              fontWeight: 'bold',
+            }}
+          >
+            {source}
+          </p>
         </div>
         <a
           href={video}
           target="_blank"
           rel="noreferrer"
           className="button button--regular button--primary button--special"
-          style={{ width: '140px' }}
+          style={{ width: '140px', fontSize: '0.875rem' }}
         >
           Watch Video
         </a>

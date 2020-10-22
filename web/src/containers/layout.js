@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
         {/* <script type="text/javascript" src={withPrefix('closeOriginal.js')} /> */}
         <link rel="stylesheet" href="https://close.com/static/dist/style.min.css?h=f48dda9a" />
         <link rel="stylesheet" type="text/css" href={withPrefix('globalStyle.css')} />
-        <script src="https://close.com/static/dist/scripts.min.js?h=b3f57533" />
+        {/* <script src="https://close.com/static/dist/scripts.min.js?h=b3f57533" /> */}
       </Helmet>
       {/* <Welcome /> */}
       <MainNav />

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
+import { useLocation } from '@reach/router';
 import Layout from '../containers/layout';
 import SEO from '../components/Seo';
 import DynlistSegment from '../components/DynlistSegment';
@@ -174,12 +175,20 @@ export const query = graphql`
   }
 `;
 export default ({ data, pageContext }) => {
-  const type = 'page';
+  const location = useLocation();
   useEffect(() => {
     // code to run on component mount
-    console.log('component did mount');
-    // window.scrollTo(0, 2000)
-  }, []);
+    if (location.key !== 'initial') {
+      document.getElementById('dynlistPage').scrollIntoView();
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://close.com/static/dist/scripts.min.js?h=b3f57533';
+    script.async = true;
+    document.getElementById('dynlistPage').appendChild(script);
+  });
+
+  const type = 'page';
 
   return (
     <Layout>

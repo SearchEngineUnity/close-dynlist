@@ -21,7 +21,7 @@ const DesktopNav = styled.nav`
 function DynlistBreadcrumb({ breadcrumb }) {
   return (
     <>
-      <DesktopNav aria-label="quotes dynamic list breadcrumb">
+      <DesktopNav aria-label="quotes menu breadcrumb">
         <ol className="dynlist-breadcrumb">
           {breadcrumb.map((crumb, index) => {
             if (index === breadcrumb.length - 1) {
@@ -49,7 +49,7 @@ function DynlistBreadcrumb({ breadcrumb }) {
         {({ location }) => {
           if (location.pathname === '/') {
             return (
-              <MobileNav aria-label="quotes dynamic list breadcrumb">
+              <MobileNav aria-label="quotes menu breadcrumb">
                 <ol className="dynlist-breadcrumb">
                   <li className="dynlist-breadcrumbItem-active">{breadcrumb[0].label}</li>
                 </ol>

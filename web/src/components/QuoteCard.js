@@ -37,6 +37,7 @@ function QuoteCard({ quote, source, video }) {
           rel="noreferrer"
           className="button button--regular button--primary button--special"
           style={{ width: '140px', fontSize: '0.875rem' }}
+          aria-label="watch video"
         >
           Watch Video
         </a>

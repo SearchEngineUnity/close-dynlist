@@ -36,7 +36,10 @@ function DynlistMenuMobile({ menu }) {
         </MobileFab>
       )}
       {open && (
-        <div className="navigation dynlist-nav--mobile">
+        <nav
+          className="navigation dynlist-nav--mobile"
+          aria-label="Navigation for quotes categories"
+        >
           <div className="mobile-menu__wrapper">
             <div className="mobile-menu__top">
               <img
@@ -108,7 +111,7 @@ function DynlistMenuMobile({ menu }) {
               })}
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </>
   );

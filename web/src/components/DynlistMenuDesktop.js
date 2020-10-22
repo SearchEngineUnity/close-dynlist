@@ -5,7 +5,7 @@ import { Location } from '@reach/router';
 import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const DesktopMenu = styled(ListGroup)`
+const DesktopMenu = styled.nav`
   @media (max-width: 575.98px) {
     display: none;
   }
@@ -20,7 +20,7 @@ function DynlistMenuDesktop({ menu }) {
     <Location>
       {({ location }) => {
         return (
-          <DesktopMenu>
+          <DesktopMenu className="list-group" aria-label="Navigation for quotes categories">
             {menu.map((item) => {
               const isActiveCategorySet = `/${item.nav.slug.current}` === location.pathname;
               return (

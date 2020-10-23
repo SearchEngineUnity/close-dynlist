@@ -176,17 +176,17 @@ export const query = graphql`
 `;
 export default ({ data, pageContext }) => {
   const location = useLocation();
-  useEffect(() => {
-    // code to run on component mount
-    if (location.key !== 'initial') {
-      document.getElementById('dynlistPage').scrollIntoView();
-    }
+  // useEffect(() => {
+  //   // code to run on component mount
+  //   if (location.key !== 'initial') {
+  //     document.getElementById('dynlistPage').scrollIntoView();
+  //   }
 
-    const script = document.createElement('script');
-    script.src = 'https://close.com/static/dist/scripts.min.js?h=b3f57533';
-    script.async = true;
-    document.getElementById('dynlistPage').appendChild(script);
-  });
+  //   const script = document.createElement('script');
+  //   script.src = 'https://close.com/static/dist/scripts.min.js?h=b3f57533';
+  //   script.async = true;
+  //   document.getElementById('dynlistPage').appendChild(script);
+  // });
 
   const type = 'page';
 

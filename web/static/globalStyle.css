@@ -47,6 +47,7 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   position: relative;
   display: block;
   padding: .75rem 1.25rem;
+  font-weight: bold;
 }
 
 .dynlist-navItem-tierOne--desktop:hover, 
@@ -55,6 +56,7 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 .dynlist-navItem-tierOne--desktop.active {
   background-color: #4364AF;
   outline: none;
+  text-decoration: underline;
 }
 
 .dynlist-navItem-tierTwo--desktop {
@@ -71,8 +73,10 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 .dynlist-navItem-tierTwo--desktop:focus, 
 .dynlist-navItem-tierTwo--desktop:active,
 .dynlist-navItem-tierTwo--desktop.active {
-  background-color: #F2F3F9;
+  background-color: #4364AF;
   outline: none;
+  text-decoration: underline;
+  color: white;
 }
 
 .fa-m:before {

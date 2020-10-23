@@ -5,7 +5,7 @@ function MainNav() {
     <>
       <header className="header">
         <div className="container">
-          <div className="row">
+          <div className="row" style={{ marginLeft: 0, marginRight: 0 }}>
             <a href="https://close.com/" className="header__logo">
               <img
                 className="logo"

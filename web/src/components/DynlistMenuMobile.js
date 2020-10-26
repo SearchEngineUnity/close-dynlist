@@ -43,13 +43,17 @@ function DynlistMenuMobile({ menu }) {
         >
           <div className="mobile-menu__wrapper">
             <div className="mobile-menu__top">
-              <img
+              {/* <img
                 className="logo"
                 src="https://close.com/static/img/close-logo-dark.svg?h=0bedac01"
                 alt="Close"
                 width="100"
                 height=""
-              />
+              /> */}
+              <span style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+                <i className="fas fa-filter" style={{ paddingRight: '0.5rem' }} />
+                Filter by Category
+              </span>
               <button
                 type="button"
                 aria-label="close dynamic list menu"

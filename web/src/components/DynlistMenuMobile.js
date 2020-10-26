@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { Fab } from 'react-tiny-fab';
 import { Accordion, Card } from 'react-bootstrap';
 import styled from 'styled-components';
+import CustomToggle from './DynlistMenuMobileToggle';
 
 const MobileFab = styled.div`
   @media (min-width: 576px) {
@@ -63,13 +64,14 @@ function DynlistMenuMobile({ menu }) {
                   <Accordion as="div">
                     <Card as="div" bsPrefix="mobile-menu__item mobile-menu__item--primary">
                       <React.Fragment key={categorySet._key}>
-                        <Accordion.Toggle
+                        {/* <Accordion.Toggle
                           as="div"
                           eventKey={categorySet._key}
                           className="mobile-menu__link mobile-menu__link--expandable"
                         >
                           {categorySet.label}
-                        </Accordion.Toggle>
+                        </Accordion.Toggle> */}
+                        <CustomToggle eventKey={categorySet._key} label={categorySet.label} />
                         <Accordion.Collapse
                           eventKey={categorySet._key}
                           bsPrefix="mobile-menu mobile-menu--secondary"

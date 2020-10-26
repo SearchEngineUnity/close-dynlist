@@ -61,9 +61,9 @@ function DynlistMenuMobile({ menu }) {
             <div className="mobile-menu mobile-menu--primary">
               {menu.map((categorySet) => {
                 return (
-                  <Accordion as="div">
+                  <Accordion as="div" key={categorySet._key}>
                     <Card as="div" bsPrefix="mobile-menu__item mobile-menu__item--primary">
-                      <React.Fragment key={categorySet._key}>
+                      <>
                         {/* <Accordion.Toggle
                           as="div"
                           eventKey={categorySet._key}
@@ -74,7 +74,7 @@ function DynlistMenuMobile({ menu }) {
                         <CustomToggle eventKey={categorySet._key} label={categorySet.label} />
                         <Accordion.Collapse
                           eventKey={categorySet._key}
-                          bsPrefix="mobile-menu mobile-menu--secondary"
+                          bsprefix="mobile-menu mobile-menu--secondary"
                         >
                           <Card.Body className="px-0">
                             {categorySet.group.map((category) => {
@@ -106,7 +106,7 @@ function DynlistMenuMobile({ menu }) {
                             })}
                           </Card.Body>
                         </Accordion.Collapse>
-                      </React.Fragment>
+                      </>
                     </Card>
                   </Accordion>
                 );

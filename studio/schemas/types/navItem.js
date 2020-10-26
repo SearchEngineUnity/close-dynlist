@@ -9,6 +9,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'shortLabel',
+      title: 'Short Label',
+      type: 'string',
+    },
+    {
       name: 'nav',
       title: 'Navigate to this page',
       type: 'reference',

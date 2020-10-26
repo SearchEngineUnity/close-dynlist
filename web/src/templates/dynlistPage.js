@@ -53,6 +53,7 @@ export const query = graphql`
             }
             _key
             label
+            shortLabel
           }
           desktopMenu {
             menu {

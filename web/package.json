@@ -10,6 +10,7 @@
     "@sanity/image-url": "^0.140.19",
     "babel-plugin-styled-components": "^1.11.1",
     "bootstrap": "^4.5.0",
+    "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "gatsby": "^2.23.12",
     "gatsby-cli": "^2.12.78",

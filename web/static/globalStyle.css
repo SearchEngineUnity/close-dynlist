@@ -195,3 +195,22 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 .icon-background {
   color: black;
 }
+
+#dynlistPage .section {
+  padding: 1rem 0
+}
+
+#dynlistPage .section--last {
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 880px){
+  #dynlistPage .section {
+    padding: 2.5rem 0;
+  }
+
+  #dynlistPage .section--last {
+    padding-bottom: 15rem;
+  }
+
+}

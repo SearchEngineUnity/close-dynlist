@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { Fab } from 'react-tiny-fab';
+import { Fab, Action } from 'react-tiny-fab';
 import { Accordion, Card } from 'react-bootstrap';
 import styled from 'styled-components';
 import CustomToggle from './DynlistMenuMobileToggle';
@@ -15,9 +15,14 @@ const MobileFab = styled.div`
 
 function DynlistMenuMobile({ menu }) {
   const [open, setOpen] = useState(false);
-  const onClickHandeler = () => {
+  const onFilterClickHandeler = () => {
     setOpen(!open);
   };
+
+  const onClickToTop = () => {
+    document.getElementById('dynlistPage').scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       {!open && (
@@ -27,13 +32,26 @@ function DynlistMenuMobile({ menu }) {
               backgroundColor: 'black',
               color: 'white',
             }}
-            icon={<i className="fas fa-filter" />}
-            // actionButtonStyles={actionButtonStyles}
+            icon={<i className="fas fa-plus" />}
             style={{ bottom: 0, right: 0 }}
+            alwaysShowTitle
             event="click"
-            // alwaysShowTitle
-            onClick={() => onClickHandeler()}
-          />
+          >
+            <Action
+              text="Filter"
+              onClick={onFilterClickHandeler}
+              style={{ backgroundColor: '#4364AF' }}
+            >
+              <i className="fas fa-filter" />
+            </Action>
+            <Action
+              text="Back to Top"
+              onClick={onClickToTop}
+              style={{ backgroundColor: '#4364AF' }}
+            >
+              <i className="fas fa-angle-double-up" />
+            </Action>
+          </Fab>
         </MobileFab>
       )}
       {open && (
@@ -50,15 +68,12 @@ function DynlistMenuMobile({ menu }) {
                 width="100"
                 height=""
               /> */}
-              <span style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-                <i className="fas fa-filter" style={{ paddingRight: '0.5rem' }} />
-                Filter by Category
-              </span>
+              <span style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Filter by Category</span>
               <button
                 type="button"
                 aria-label="close dynamic list menu"
                 className="dynlist-nav-close"
-                onClick={() => onClickHandeler()}
+                onClick={onFilterClickHandeler}
                 style={{ backgroundColor: 'transparent', border: 'none' }}
               />
             </div>

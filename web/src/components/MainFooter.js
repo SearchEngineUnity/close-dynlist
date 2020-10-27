@@ -1,17 +1,7 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const Footer = styled.footer`
-  background-color: #f2f2f2;
-  text-align: center;
-  font-size: 12px;
-  color: #2c2142;
-  line-height: 0px;
-  padding: 12px;
-`;
-
-function MainFooter({ address, city, email, postalCode, province, name }) {
+function MainFooter() {
   return (
     <footer className="footer">
       <div className="footer__top">

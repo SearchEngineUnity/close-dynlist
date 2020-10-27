@@ -29,9 +29,9 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 }
 
 .solid-background--top--grey {
-  top: 450px;
+  top: 400px;
   position: absolute;
-  width: 200%;
+  width: 100vw;
   height: 500px;
   transform: skewY(-3deg);
   z-index: -1;
@@ -39,7 +39,7 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 }
 
 .dynlist-navItem-tierOne--desktop {
-  background-color: #555863;
+  background-color: #3E444E;
   border: 0;
   border-bottom: 4px solid #F2F3F9;
   border-radius: none;
@@ -180,7 +180,7 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   left: 11px;
   width: 3px;
   height: 24px;
-  background-color: #3e444e;
+  background-color: #3E444E;
   border-radius: 2px;
 }
 
@@ -204,9 +204,9 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   padding-bottom: 6rem;
 }
 
-/* #dynlistPage .h1 {
-  font-size: ;
-} */
+.rtf--ab__c>span {
+  background: black;
+}
 
 @media (min-width: 880px){
   #dynlistPage .section {

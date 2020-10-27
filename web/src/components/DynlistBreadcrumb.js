@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Location } from '@reach/router';
 
 const MobileNav = styled.nav`
   display: flex;
@@ -69,36 +68,6 @@ function DynlistBreadcrumb({ breadcrumb }) {
           })}
         </ol>
       </MobileNav>
-      {/* <Location>
-        {({ location }) => {
-          if (location.pathname === '/') {
-            return (
-              <MobileNav aria-label="quotes menu breadcrumb">
-                <ol className="dynlist-breadcrumb">
-                  <li className="dynlist-breadcrumbItem-active">{breadcrumb[0].label}</li>
-                </ol>
-              </MobileNav>
-            );
-          }
-          return (
-            <MobileNav aria-label="quotes dynamic list breadcrumb">
-              <ol className="dynlist-breadcrumb">
-                <li className="dynlist-breadcrumbItem-mobile">
-                  <Link
-                    to={
-                      breadcrumb[breadcrumb.length - 2].nav.slug.current === '/'
-                        ? '/'
-                        : `/${breadcrumb[breadcrumb.length - 2].nav.slug.current}`
-                    }
-                  >
-                    {breadcrumb[breadcrumb.length - 2].label}
-                  </Link>
-                </li>
-              </ol>
-            </MobileNav>
-          );
-        }}
-      </Location> */}
     </>
   );
 }

@@ -61,13 +61,6 @@ function DynlistMenuMobile({ menu }) {
         >
           <div className="mobile-menu__wrapper">
             <div className="mobile-menu__top">
-              {/* <img
-                className="logo"
-                src="https://close.com/static/img/close-logo-dark.svg?h=0bedac01"
-                alt="Close"
-                width="100"
-                height=""
-              /> */}
               <span style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Filter by Category</span>
               <button
                 type="button"
@@ -83,13 +76,6 @@ function DynlistMenuMobile({ menu }) {
                   <Accordion as="div" key={categorySet._key}>
                     <Card as="div" bsPrefix="mobile-menu__item mobile-menu__item--primary">
                       <>
-                        {/* <Accordion.Toggle
-                          as="div"
-                          eventKey={categorySet._key}
-                          className="mobile-menu__link mobile-menu__link--expandable"
-                        >
-                          {categorySet.label}
-                        </Accordion.Toggle> */}
                         <CustomToggle eventKey={categorySet._key} label={categorySet.label} />
                         <Accordion.Collapse
                           eventKey={categorySet._key}

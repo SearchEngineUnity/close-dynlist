@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { Button } from 'react-bootstrap';
 import { Fab } from 'react-tiny-fab';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Layout from '../containers/layout';
-// import SEO from "../containers/seo"
 
 const NotFoundPage = () => (
   <div className="404.html">

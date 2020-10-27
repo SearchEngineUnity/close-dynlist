@@ -5,6 +5,7 @@ import Layout from '../containers/layout';
 import SEO from '../components/Seo';
 import DynlistSegment from '../components/DynlistSegment';
 import LrSegment from '../components/LrSegment';
+import BackToTopFAB from '../components/BackToTopFAB';
 import { mapSeoToProps } from '../lib/mapToProps';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -226,6 +227,7 @@ export default ({ data, pageContext }) => {
               return <div key="default"> Still under development</div>;
           }
         })}
+        <BackToTopFAB divId="dynlistPage" />
       </main>
     </Layout>
   );

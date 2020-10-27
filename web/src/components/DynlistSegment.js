@@ -171,8 +171,8 @@ export default function DynlistSegment({
   console.log(quotesOnPage);
   return (
     <>
-      <div className="solid-background--top--grey" />
-      <section className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
+      {/* <div className="solid-background--top--grey" /> */}
+      <section id="dynlistSection" className={sectionStyle} style={{ backgroundColor: '#f2f3f9' }}>
         <DynlistMenuMobile menu={mobileMenu.menu} />
         <div className="container">
           <Row style={{ width: 'auto' }}>

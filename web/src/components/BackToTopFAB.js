@@ -26,7 +26,7 @@ function BackToTopFAB({ divId }) {
         style={{ bottom: 0, right: 0 }}
         event="click"
         // alwaysShowTitle
-        onClick={() => onClickHandler()}
+        onClick={onClickHandler}
       />
     </DesktopWrapper>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { Link } from 'gatsby';
 import { Fab, Action } from 'react-tiny-fab';
 import { Accordion, Card } from 'react-bootstrap';
@@ -15,6 +16,17 @@ const MobileFab = styled.div`
 
 function DynlistMenuMobile({ menu }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      document.documentElement.style.overflow = 'hidden';
+      disableBodyScroll(document.documentElement);
+    } else {
+      document.documentElement.style = null;
+      clearAllBodyScrollLocks();
+    }
+  }, [open]);
+
   const onFilterClickHandeler = () => {
     setOpen(!open);
   };

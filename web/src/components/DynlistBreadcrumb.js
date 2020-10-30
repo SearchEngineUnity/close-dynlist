@@ -47,11 +47,37 @@ function DynlistBreadcrumb({ breadcrumb }) {
       <MobileNav aria-label="quotes menu breadcrumb">
         <ol className="dynlist-breadcrumb">
           {breadcrumb.map((crumb, index) => {
+            if (breadcrumb.length === 1) {
+              return (
+                <li className="dynlist-breadcrumbItem active" key={crumb._key}>
+                  <i
+                    className="fas fa-home"
+                    style={{ paddingRight: '0.5rem', verticalAlign: 'middle', lineHeight: '24px' }}
+                  />
+                  <span>{crumb.shortLabel}</span>
+                </li>
+              );
+            }
+
             if (index === breadcrumb.length - 1) {
               return (
                 <li className="dynlist-breadcrumbItem active" key={crumb._key}>
                   {crumb.shortLabel}
                 </li>
+              );
+            }
+
+            if (index === 0) {
+              console.log('index is 0');
+              return (
+                <React.Fragment key={crumb._key}>
+                  <li className="dynlist-breadcrumbItem">
+                    <Link to={crumb.nav.slug.current === '/' ? '/' : `/${crumb.nav.slug.current}`}>
+                      <i className="fas fa-home" />
+                    </Link>
+                  </li>
+                  <span className="dynlist-bradcrumbItem-seperator">/</span>
+                </React.Fragment>
               );
             }
 

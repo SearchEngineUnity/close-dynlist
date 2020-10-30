@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import HeroBlock from './HeroBlock';
 import ImageBlock from './ImageBlock';
 import CfFormBlock from './CfFormBlock';

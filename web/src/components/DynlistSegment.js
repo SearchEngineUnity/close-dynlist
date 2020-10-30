@@ -1,8 +1,6 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import QuoteCard from './QuoteCard';
 import DynlistMenuDesktop from './DynlistMenuDesktop';
 import DynlistMenuMobile from './DynlistMenuMobile';
@@ -23,28 +21,7 @@ const categoryValue = (quote, id) => {
   }
   return 3;
 };
-// Fisher-Yates shuffle
-function shuffle(array) {
-  let m = array.length;
-  let t;
-  let i;
 
-  // While there remain elements to shuffle…
-  while (m) {
-    // Pick a remaining element…
-    // eslint-disable-next-line no-plusplus
-    i = Math.floor(Math.random() * m--);
-
-    // And swap it with the current element.
-    t = array[m];
-    // eslint-disable-next-line no-param-reassign
-    array[m] = array[i];
-    // eslint-disable-next-line no-param-reassign
-    array[i] = t;
-  }
-
-  return array;
-}
 const randomize = (quotes, categorySetId, allCategorySetIds) => {
   const primeArray = [
     3,
@@ -168,7 +145,7 @@ export default function DynlistSegment({
   if (categoryId) {
     quotesOnPage = categoryQuotes;
   }
-  console.log(quotesOnPage);
+
   return (
     <>
       {/* <div className="solid-background--top--grey" /> */}

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { Button } from 'react-bootstrap';
 import { Fab } from 'react-tiny-fab';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -28,7 +26,7 @@ function BackToTopFAB({ divId }) {
         style={{ bottom: 0, right: 0 }}
         event="click"
         // alwaysShowTitle
-        onClick={() => onClickHandler()}
+        onClick={onClickHandler}
       />
     </DesktopWrapper>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
-import styled from 'styled-components';
 import BlockContent from './block-contents/SeuLPSerializer';
 
 function HeroBlock({ col, h1, subtitle, byline, author }) {

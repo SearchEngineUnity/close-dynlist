@@ -1,7 +1,5 @@
 import React from 'react';
-import Parser from 'html-react-parser';
 import PropTypes from 'prop-types';
-import { Row } from 'react-bootstrap';
 
 function CfForm({ col, className, ctaId, websiteId }) {
   return (

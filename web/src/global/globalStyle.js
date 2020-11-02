@@ -1,4 +1,6 @@
-/*! minireset.css v0.0.4 | MIT License | github.com/jgthms/minireset.css */
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 html,
 body,
 p,
@@ -927,7 +929,8 @@ p {
   }
 }
 
-/* Starts SEU CSS Code */
+
+
 a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
@@ -1149,3 +1152,6 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
   }
 
 }
+`;
+
+export default GlobalStyle;

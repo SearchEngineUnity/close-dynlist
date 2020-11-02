@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 import MainFooter from '../components/MainFooter';
 import MainNav from '../components/MainNav';
+import GlobalStyle from '../global/globalStyle';
 
 const Layout = ({ children }) => {
   return (
@@ -35,11 +36,12 @@ const Layout = ({ children }) => {
           async
         />
         <script />
-        <link rel="preload" type="text/css" href={withPrefix('globalStyle.css')} as="style" />
-        <link rel="stylesheet" type="text/css" href={withPrefix('globalStyle.css')} />
+        {/* <link rel="preload" type="text/css" href={withPrefix('globalStyle.css')} as="style" />
+        <link rel="stylesheet" type="text/css" href={withPrefix('globalStyle.css')} /> */}
       </Helmet>
       <MainNav />
       <>{children}</>
+      <GlobalStyle />
       <MainFooter />
     </>
   );

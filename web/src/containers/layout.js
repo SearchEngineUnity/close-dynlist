@@ -41,8 +41,8 @@ const Layout = ({ children }) => {
       </Helmet>
       <MainNav />
       <>{children}</>
-      <GlobalStyle />
       <MainFooter />
+      <GlobalStyle />
     </>
   );
 };

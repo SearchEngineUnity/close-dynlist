@@ -35,12 +35,6 @@ const Layout = ({ children }) => {
           async
         />
         <script />
-        <link
-          rel="preload"
-          href="https://close.com/static/dist/style.min.css?h=f48dda9a"
-          as="style"
-        />
-        <link rel="stylesheet" href="https://close.com/static/dist/style.min.css?h=f48dda9a" />
         <link rel="preload" type="text/css" href={withPrefix('globalStyle.css')} as="style" />
         <link rel="stylesheet" type="text/css" href={withPrefix('globalStyle.css')} />
       </Helmet>

@@ -74,7 +74,6 @@ function DynlistBreadcrumb({ breadcrumb }) {
             }
 
             if (index === 0) {
-              console.log('index is 0');
               return (
                 <React.Fragment key={crumb._key}>
                   <li className="dynlist-breadcrumbItem">

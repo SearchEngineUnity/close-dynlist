@@ -51,7 +51,6 @@ const randomize = (quotes, categorySetId, allCategorySetIds) => {
   ];
   const categorySetIndex = allCategorySetIds.map((x) => x._id).indexOf(categorySetId);
   // value not undefined verify this before randomSet if statement is executed if it is undefined then two things consol log an error and fix
-  console.log(primeArray[categorySetIndex]);
   const randomSet = quotes.filter((el, index) => {
     if (index % primeArray[categorySetIndex] === 0 && index !== 0) {
       return true;

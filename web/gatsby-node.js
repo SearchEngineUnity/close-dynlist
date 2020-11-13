@@ -3,7 +3,7 @@
 const path = require('path');
 
 // create all structured pages except for /guides
-async function creteStructuredPages(actions, graphql) {
+async function createStructuredPages(actions, graphql) {
   const { data } = await graphql(`
     {
       allSanityDynlistPage {
@@ -44,6 +44,38 @@ async function creteStructuredPages(actions, graphql) {
   });
 }
 
+// create redirect
+async function createPageRedirects(actions, graphql) {
+  const { data } = await graphql(`
+    {
+      allSanityRedirect {
+        edges {
+          node {
+            redirectPaths
+            redirectTo
+          }
+        }
+      }
+    }
+  `);
+
+  const redirectEdges = data.allSanityRedirect.edges;
+  redirectEdges.forEach((edge) => {
+    const { redirectPaths, redirectTo } = edge.node;
+    const toPath = redirectTo;
+
+    redirectPaths.forEach((fromPath) => {
+      actions.createRedirect({
+        fromPath,
+        toPath,
+        isPermanent: true,
+        force: true,
+      });
+    });
+  });
+}
+
 exports.createPages = async ({ actions, graphql }) => {
-  await creteStructuredPages(actions, graphql);
+  await createStructuredPages(actions, graphql);
+  await createPageRedirects(actions, graphql);
 };

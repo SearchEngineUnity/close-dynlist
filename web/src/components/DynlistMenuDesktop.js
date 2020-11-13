@@ -13,7 +13,7 @@ const DesktopMenu = styled.nav`
 
 function DynlistMenuDesktop({ menu }) {
   const onClickHandler = (slug) => {
-    navigate(`/${slug}`);
+    navigate(`/quotes/${slug}`);
   };
 
   return (

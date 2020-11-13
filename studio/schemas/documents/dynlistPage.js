@@ -134,7 +134,7 @@ export default {
       media: 'metaTags.openGraph.image',
     },
     prepare({ title, slug, media }) {
-      const currentSlug = slug === '/' ? '/' : `/${slug}`;
+      const currentSlug = slug === '/' ? '/quotes/' : `/quotes/${slug}/`;
       return {
         title,
         subtitle: currentSlug,

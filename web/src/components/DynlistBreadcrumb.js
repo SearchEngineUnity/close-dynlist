@@ -34,7 +34,13 @@ function DynlistBreadcrumb({ breadcrumb }) {
             return (
               <React.Fragment key={crumb._key}>
                 <li className="dynlist-breadcrumbItem">
-                  <Link to={crumb.nav.slug.current === '/' ? '/' : `/${crumb.nav.slug.current}`}>
+                  <Link
+                    to={
+                      crumb.nav.slug.current === '/'
+                        ? '/quotes'
+                        : `/quotes/${crumb.nav.slug.current}`
+                    }
+                  >
                     {crumb.label}
                   </Link>
                 </li>
@@ -72,7 +78,13 @@ function DynlistBreadcrumb({ breadcrumb }) {
               return (
                 <React.Fragment key={crumb._key}>
                   <li className="dynlist-breadcrumbItem">
-                    <Link to={crumb.nav.slug.current === '/' ? '/' : `/${crumb.nav.slug.current}`}>
+                    <Link
+                      to={
+                        crumb.nav.slug.current === '/'
+                          ? '/quotes'
+                          : `/quotes/${crumb.nav.slug.current}`
+                      }
+                    >
                       <i className="fas fa-home" />
                     </Link>
                   </li>
@@ -84,7 +96,13 @@ function DynlistBreadcrumb({ breadcrumb }) {
             return (
               <React.Fragment key={crumb._key}>
                 <li className="dynlist-breadcrumbItem">
-                  <Link to={crumb.nav.slug.current === '/' ? '/' : `/${crumb.nav.slug.current}`}>
+                  <Link
+                    to={
+                      crumb.nav.slug.current === '/'
+                        ? '/quotes'
+                        : `/quotes/${crumb.nav.slug.current}`
+                    }
+                  >
                     {crumb.shortLabel}
                   </Link>
                 </li>

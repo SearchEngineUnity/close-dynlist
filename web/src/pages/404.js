@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '../containers/layout';
+import SEO from '../components/Seo';
 
 const NotFoundPage = () => (
   <div className="404.html">
+    <SEO title="Close CRM | Not Found" type="page" slug="404" nofollow noindex />
     <Layout>
       <section className="section section--last">
         <div className="gradient-background--top gradient-background--error-page" />

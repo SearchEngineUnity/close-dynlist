@@ -52,6 +52,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-serviceworker`,
+    `gatsby-plugin-force-trailing-slashes`,
     {
       resolve: 'gatsby-plugin-html-attributes',
       options: {
@@ -64,7 +65,12 @@ module.exports = {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*', allow: ['/'] }],
+            policy: [
+              { userAgent: '*', disallow: ['/quotes'] },
+              { userAgent: '*', disallow: ['/quotes/'] },
+              { userAgent: '*', disallow: ['/404'] },
+              { userAgent: '*', disallow: ['/404/'] },
+            ],
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],

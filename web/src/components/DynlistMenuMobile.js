@@ -97,7 +97,7 @@ function DynlistMenuMobile({ menu }) {
                             {categorySet.group.map((category) => {
                               return (
                                 <Link
-                                  to={`/${category.nav.slug.current}`}
+                                  to={`/quotes/${category.nav.slug.current}`}
                                   className="dropdown-item"
                                   key={category._key}
                                 >

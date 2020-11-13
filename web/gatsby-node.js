@@ -31,7 +31,7 @@ async function creteStructuredPages(actions, graphql) {
   const pages = data.allSanityDynlistPage.edges;
   pages.forEach((page) => {
     actions.createPage({
-      path: page.node.slug.current === '/' ? '/' : `/${page.node.slug.current}`,
+      path: page.node.slug.current === '/' ? '/quotes' : `/quotes/${page.node.slug.current}`,
       component: path.resolve(`./src/templates/dynlistPage.js`),
       context: {
         slug: page.node.slug.current,

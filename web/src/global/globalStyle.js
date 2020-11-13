@@ -619,10 +619,10 @@ p {
   left: 38px;
 }
 .dropdown-menu--solutions {
-  width: 380px;
+  width: 744px;
 }
 .dropdown-menu--solutions::before {
-  left: 42px;
+  left: 38px;
 }
 .dropdown-menu--resources {
   width: 480px;

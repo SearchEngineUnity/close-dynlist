@@ -190,7 +190,7 @@ export default ({ data, pageContext }) => {
     document.getElementById('dynlistPage').appendChild(script);
   });
 
-  const type = 'page';
+  const type = 'quotes';
 
   return (
     <Layout>

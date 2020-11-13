@@ -27,6 +27,10 @@ function Seo({
   const robots = `${nofollow ? 'nofollow' : ''} ${noindex ? 'noindex' : ''}`;
 
   switch (type) {
+    case 'quotes':
+      metaURL = slug === '/' ? `${siteUrl}/quotes/` : `${siteUrl}/quotes/${slug}`;
+      ogType = 'website';
+      break;
     case 'page':
       metaURL = slug === '/' ? siteUrl : `${siteUrl}/${slug}`;
       ogType = 'website';

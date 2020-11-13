@@ -29,14 +29,11 @@ export default {
   ],
   preview: {
     select: {
-      slug: 'redirectTo.slug.current',
-      type: 'redirectTo._type',
+      redirectTo: 'redirectTo',
     },
-    prepare({ slug, type }) {
-      const path = type === 'page' ? '/' : '/guide/';
-
+    prepare({ redirectTo }) {
       return {
-        title: `${path}${slug}`,
+        title: `To ${redirectTo}`,
       };
     },
   },

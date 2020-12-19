@@ -66,8 +66,6 @@ module.exports = {
         env: {
           production: {
             policy: [
-              { userAgent: '*', disallow: ['/quotes'] },
-              { userAgent: '*', disallow: ['/quotes/'] },
               { userAgent: '*', disallow: ['/404'] },
               { userAgent: '*', disallow: ['/404/'] },
             ],

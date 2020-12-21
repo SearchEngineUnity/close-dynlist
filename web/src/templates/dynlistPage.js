@@ -92,6 +92,7 @@ export const query = graphql`
                 }
                 group {
                   icon
+                  _key
                   nav {
                     slug {
                       current

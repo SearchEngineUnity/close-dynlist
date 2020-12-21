@@ -31,12 +31,12 @@ const serializers = {
   marks: {
     internalLink: ({ mark, children }) => {
       const { slug = {}, _type, isChapter, parentGuide } = mark.reference;
-      let href = slug.current === '/' ? `/` : `/${slug.current}`;
+      let href = slug.current === '/' ? `/` : `/${slug.current}/`;
       let mpSlug = '';
 
       if (_type === 'guide' && isChapter) {
         mpSlug = parentGuide.slug.current;
-        href = `/${mpSlug}/${slug.current}`;
+        href = `/${mpSlug}/${slug.current}/`;
       }
       return <Link to={href}>{children}</Link>;
     },

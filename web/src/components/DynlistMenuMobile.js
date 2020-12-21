@@ -84,6 +84,7 @@ function DynlistMenuMobile({ menu }) {
             </div>
             <div className="mobile-menu mobile-menu--primary">
               {menu.map((categorySet) => {
+                console.log(`categoryset key: ${categorySet._key}`);
                 return (
                   <Accordion as="div" key={categorySet._key}>
                     <Card as="div" bsPrefix="mobile-menu__item mobile-menu__item--primary">
@@ -95,9 +96,10 @@ function DynlistMenuMobile({ menu }) {
                         >
                           <Card.Body className="px-0">
                             {categorySet.group.map((category) => {
+                              console.log(`category key: ${category._key}`);
                               return (
                                 <Link
-                                  to={`/quotes/${category.nav.slug.current}`}
+                                  to={`/quotes/${category.nav.slug.current}/`}
                                   className="dropdown-item"
                                   key={category._key}
                                 >

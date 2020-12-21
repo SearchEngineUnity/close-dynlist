@@ -13,7 +13,7 @@ const DesktopMenu = styled.nav`
 
 function DynlistMenuDesktop({ menu }) {
   const onClickHandler = (slug) => {
-    navigate(`/quotes/${slug}`);
+    navigate(`/quotes/${slug}/`);
   };
 
   return (
@@ -22,7 +22,7 @@ function DynlistMenuDesktop({ menu }) {
         return (
           <DesktopMenu className="list-group" aria-label="Navigation for quotes categories">
             {menu.map((item) => {
-              const isActiveCategorySet = `/${item.nav.slug.current}` === location.pathname;
+              const isActiveCategorySet = `/quotes/${item.nav.slug.current}/` === location.pathname;
               return (
                 <React.Fragment key={item._key}>
                   <ListGroup.Item
@@ -34,7 +34,8 @@ function DynlistMenuDesktop({ menu }) {
                     {item.label}
                   </ListGroup.Item>
                   {item.group.map((el) => {
-                    const isActiveCategory = `/${el.nav.slug.current}` === location.pathname;
+                    const isActiveCategory =
+                      `/quotes/${el.nav.slug.current}/` === location.pathname;
                     return (
                       <ListGroup.Item
                         action

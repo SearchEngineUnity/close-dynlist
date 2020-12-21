@@ -28,19 +28,19 @@ function Seo({
 
   switch (type) {
     case 'quotes':
-      metaURL = slug === '/' ? `${siteUrl}/quotes/` : `${siteUrl}/quotes/${slug}`;
+      metaURL = slug === '/' ? `${siteUrl}/quotes/` : `${siteUrl}/quotes/${slug}/`;
       ogType = 'website';
       break;
     case 'page':
-      metaURL = slug === '/' ? siteUrl : `${siteUrl}/${slug}`;
+      metaURL = slug === '/' ? siteUrl : `${siteUrl}/${slug}/`;
       ogType = 'website';
       break;
     case 'guide':
-      metaURL = `${siteUrl}/${slug}`;
+      metaURL = `${siteUrl}/${slug}/`;
       ogType = 'article';
       break;
     case 'chapter':
-      metaURL = `${siteUrl}/${mpUrl}/${slug}`;
+      metaURL = `${siteUrl}/${mpUrl}/${slug}/`;
       ogType = 'article';
       break;
     default:

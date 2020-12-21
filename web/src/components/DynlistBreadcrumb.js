@@ -37,8 +37,8 @@ function DynlistBreadcrumb({ breadcrumb }) {
                   <Link
                     to={
                       crumb.nav.slug.current === '/'
-                        ? '/quotes'
-                        : `/quotes/${crumb.nav.slug.current}`
+                        ? '/quotes/'
+                        : `/quotes/${crumb.nav.slug.current}/`
                     }
                   >
                     {crumb.label}
@@ -80,8 +80,8 @@ function DynlistBreadcrumb({ breadcrumb }) {
                     <Link
                       to={
                         crumb.nav.slug.current === '/'
-                          ? '/quotes'
-                          : `/quotes/${crumb.nav.slug.current}`
+                          ? '/quotes/'
+                          : `/quotes/${crumb.nav.slug.current}/`
                       }
                     >
                       <i className="fas fa-home" />
@@ -98,8 +98,8 @@ function DynlistBreadcrumb({ breadcrumb }) {
                   <Link
                     to={
                       crumb.nav.slug.current === '/'
-                        ? '/quotes'
-                        : `/quotes/${crumb.nav.slug.current}`
+                        ? '/quotes/'
+                        : `/quotes/${crumb.nav.slug.current}/`
                     }
                   >
                     {crumb.shortLabel}

@@ -94,13 +94,13 @@ module.exports = {
         sitemapSize: 5000,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-tagmanager`,
-    //   options: {
-    //     id: process.env.GTM_ID,
-    //     includeInDevelopment: false,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-5F5LRKB',
+        includeInDevelopment: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { Location } from '@reach/router';
 import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 const DesktopMenu = styled.nav`
   @media (max-width: 575.98px) {
@@ -25,29 +26,29 @@ function DynlistMenuDesktop({ menu }) {
               const isActiveCategorySet = `/quotes/${item.nav.slug.current}/` === location.pathname;
               return (
                 <React.Fragment key={item._key}>
-                  <ListGroup.Item
-                    action
-                    href={`/quotes/${item.nav.slug.current}/`}
+                  <Link
+                    to={`/quotes/${item.nav.slug.current}/`}
                     // onClick={() => onClickHandler(item.nav.slug.current)}
-                    bsPrefix="dynlist-navItem-tierOne--desktop text-left"
-                    active={isActiveCategorySet}
+                    className={classNames('dynlist-navItem-tierOne--desktop', 'text-left', {
+                      active: isActiveCategorySet,
+                    })}
                   >
                     {item.label}
-                  </ListGroup.Item>
+                  </Link>
                   {item.group.map((el) => {
                     const isActiveCategory =
                       `/quotes/${el.nav.slug.current}/` === location.pathname;
                     return (
-                      <ListGroup.Item
-                        action
-                        href={`/quotes/${el.nav.slug.current}/`}
+                      <Link
+                        to={`/quotes/${el.nav.slug.current}/`}
                         // onClick={() => onClickHandler(el.nav.slug.current)}
-                        bsPrefix="dynlist-navItem-tierTwo--desktop text-left"
+                        className={classNames('dynlist-navItem-tierTwo--desktop', 'text-left', {
+                          active: isActiveCategory,
+                        })}
                         key={el._key}
-                        active={isActiveCategory}
                       >
                         {el.label}
-                      </ListGroup.Item>
+                      </Link>
                     );
                   })}
                 </React.Fragment>

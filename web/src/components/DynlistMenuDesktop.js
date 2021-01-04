@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, navigate } from 'gatsby';
 import { Location } from '@reach/router';
-import { ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
-import classNames from 'classnames';
 
 const DesktopMenu = styled.nav`
   @media (max-width: 575.98px) {
@@ -13,10 +11,6 @@ const DesktopMenu = styled.nav`
 `;
 
 function DynlistMenuDesktop({ menu }) {
-  const onClickHandler = (slug) => {
-    navigate(`/quotes/${slug}/`);
-  };
-
   return (
     <Location>
       {({ location }) => {
@@ -29,9 +23,8 @@ function DynlistMenuDesktop({ menu }) {
                   <Link
                     to={`/quotes/${item.nav.slug.current}/`}
                     // onClick={() => onClickHandler(item.nav.slug.current)}
-                    className={classNames('dynlist-navItem-tierOne--desktop', 'text-left', {
-                      active: isActiveCategorySet,
-                    })}
+                    className="dynlist-navItem-tierOne--desktop text-left"
+                    activeClassName="active"
                   >
                     {item.label}
                   </Link>
@@ -42,10 +35,9 @@ function DynlistMenuDesktop({ menu }) {
                       <Link
                         to={`/quotes/${el.nav.slug.current}/`}
                         // onClick={() => onClickHandler(el.nav.slug.current)}
-                        className={classNames('dynlist-navItem-tierTwo--desktop', 'text-left', {
-                          active: isActiveCategory,
-                        })}
+                        className="dynlist-navItem-tierTwo--desktop text-left"
                         key={el._key}
+                        activeClassName="active"
                       >
                         {el.label}
                       </Link>

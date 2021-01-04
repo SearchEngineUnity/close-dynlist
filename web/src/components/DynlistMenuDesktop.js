@@ -40,7 +40,7 @@ function DynlistMenuDesktop({ menu }) {
                     return (
                       <ListGroup.Item
                         action
-                        href={`/quotes/${item.nav.slug.current}/`}
+                        href={`/quotes/${el.nav.slug.current}/`}
                         onClick={() => onClickHandler(el.nav.slug.current)}
                         bsPrefix="dynlist-navItem-tierTwo--desktop text-left"
                         key={el._key}

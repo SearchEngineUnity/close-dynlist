@@ -27,6 +27,7 @@ function DynlistMenuDesktop({ menu }) {
                 <React.Fragment key={item._key}>
                   <ListGroup.Item
                     action
+                    href={`/quotes/${item.nav.slug.current}/`}
                     onClick={() => onClickHandler(item.nav.slug.current)}
                     bsPrefix="dynlist-navItem-tierOne--desktop text-left"
                     active={isActiveCategorySet}
@@ -39,6 +40,7 @@ function DynlistMenuDesktop({ menu }) {
                     return (
                       <ListGroup.Item
                         action
+                        href={`/quotes/${item.nav.slug.current}/`}
                         onClick={() => onClickHandler(el.nav.slug.current)}
                         bsPrefix="dynlist-navItem-tierTwo--desktop text-left"
                         key={el._key}

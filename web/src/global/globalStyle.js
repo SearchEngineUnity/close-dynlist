@@ -984,6 +984,7 @@ a.button--primary:hover, a.button--primary:focus, a.button--primary:active{
 .dynlist-navItem-tierOne--desktop:active,
 .dynlist-navItem-tierOne--desktop.active {
   background-color: #4364AF;
+  color: white;
   outline: none;
   text-decoration: underline;
 }

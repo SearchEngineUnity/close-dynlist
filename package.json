@@ -51,6 +51,5 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2"
-  },
-  "dependencies": {}
+  }
 }

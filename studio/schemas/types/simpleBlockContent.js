@@ -33,22 +33,6 @@ export default {
               },
             ],
           },
-          {
-            name: 'internalLink',
-            type: 'object',
-            title: 'Internal link',
-            blockEditor: {
-              icon: FaLink,
-            },
-            fields: [
-              {
-                name: 'reference',
-                type: 'reference',
-                title: 'Reference',
-                to: [{ type: 'guide' }, { type: 'page' }],
-              },
-            ],
-          },
         ],
       },
     },

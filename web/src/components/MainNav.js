@@ -15,7 +15,7 @@ function MainNav() {
             <a href="https://close.com/" className="header__logo">
               <img
                 className="logo"
-                src="https://close.com/static/img/close-logo-dark.svg?h=0bedac01"
+                src="https://cdn.prod.website-files.com/61717799a852418a278cfa9b/66267ac89a71da7e5c4cc963_logo-dark-nav.svg"
                 alt="Close"
                 width="124"
                 height="32"
@@ -416,7 +416,7 @@ function MainNav() {
           <div className="mobile-menu__top">
             <img
               className="logo"
-              src="https://close.com/static/img/close-logo-dark.svg?h=0bedac01"
+              src="https://cdn.prod.website-files.com/61717799a852418a278cfa9b/66267ac89a71da7e5c4cc963_logo-dark-nav.svg"
               alt="Close"
               width="100"
               height=""

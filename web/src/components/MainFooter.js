@@ -159,7 +159,7 @@ function MainFooter() {
           <div className="footer__social">
             <a href="https://www.facebook.com/close.io" className="footer__social-link">
               <img
-                src="https://close.com/static/img/icons/social-facebook.svg?h=edb73f78"
+                src="https://cdn.prod.website-files.com/61717799a852418a278cfa9b/61ea9e09e756cb79b6d02ad0_facebook.svg"
                 alt=""
                 width="22"
                 height="22"
@@ -167,7 +167,7 @@ function MainFooter() {
             </a>
             <a href="https://twitter.com/close" className="footer__social-link">
               <img
-                src="https://close.com/static/img/icons/social-twitter.svg?h=1556ac0a"
+                src="https://cdn.prod.website-files.com/61717799a852418a278cfa9b/64dbb43e0aeef21b05b539bb_logo.svg"
                 alt=""
                 width="23"
                 height="19"
@@ -175,7 +175,7 @@ function MainFooter() {
             </a>
             <a href="https://www.youtube.com/user/closeio" className="footer__social-link">
               <img
-                src="https://close.com/static/img/icons/social-youtube.svg?h=d2caec56"
+                src="https://cdn.prod.website-files.com/61717799a852418a278cfa9b/62fe58155c607a674b47f72f_youtube-logo-28-white.svg"
                 alt=""
                 width="26"
                 height="18"
